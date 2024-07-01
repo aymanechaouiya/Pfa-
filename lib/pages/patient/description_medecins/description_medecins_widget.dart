@@ -24,6 +24,8 @@ class _DescriptionMedecinsWidgetState extends State<DescriptionMedecinsWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => DescriptionMedecinsModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

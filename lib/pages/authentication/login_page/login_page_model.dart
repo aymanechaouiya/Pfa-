@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'login_page_widget.dart' show LoginPageWidget;
@@ -7,18 +8,20 @@ class LoginPageModel extends FlutterFlowModel<LoginPageWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // State field(s) for emailAddress widget.
-  FocusNode? emailAddressFocusNode;
-  TextEditingController? emailAddressTextController;
-  String? Function(BuildContext, String?)? emailAddressTextControllerValidator;
+  // State field(s) for email widget.
+  FocusNode? emailFocusNode;
+  TextEditingController? emailTextController;
+  String? Function(BuildContext, String?)? emailTextControllerValidator;
   // State field(s) for password widget.
   FocusNode? passwordFocusNode;
   TextEditingController? passwordTextController;
   late bool passwordVisibility;
   String? Function(BuildContext, String?)? passwordTextControllerValidator;
-  // State field(s) for DropDown widget.
-  String? dropDownValue;
-  FormFieldController<String>? dropDownValueController;
+  // State field(s) for role widget.
+  String? roleValue;
+  FormFieldController<String>? roleValueController;
+  // Stores action output result for [Backend Call - API (LoginChecks)] action in Button widget.
+  ApiCallResponse? apiResultdhi;
 
   @override
   void initState(BuildContext context) {
@@ -28,8 +31,8 @@ class LoginPageModel extends FlutterFlowModel<LoginPageWidget> {
   @override
   void dispose() {
     unfocusNode.dispose();
-    emailAddressFocusNode?.dispose();
-    emailAddressTextController?.dispose();
+    emailFocusNode?.dispose();
+    emailTextController?.dispose();
 
     passwordFocusNode?.dispose();
     passwordTextController?.dispose();

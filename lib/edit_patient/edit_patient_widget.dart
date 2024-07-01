@@ -79,6 +79,8 @@ class _EditPatientWidgetState extends State<EditPatientWidget>
           !anim.applyInitialState),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

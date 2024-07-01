@@ -24,6 +24,8 @@ class _CardMedcinsWidgetState extends State<CardMedcinsWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => CardMedcinsModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

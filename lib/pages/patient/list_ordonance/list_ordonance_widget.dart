@@ -21,6 +21,8 @@ class _ListOrdonanceWidgetState extends State<ListOrdonanceWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ListOrdonanceModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

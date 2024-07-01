@@ -111,6 +111,8 @@ class _DashboardAdminWidgetState extends State<DashboardAdminWidget>
           !anim.applyInitialState),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

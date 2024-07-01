@@ -79,6 +79,8 @@ class _CreatIionPatientWidgetState extends State<CreatIionPatientWidget>
           !anim.applyInitialState),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

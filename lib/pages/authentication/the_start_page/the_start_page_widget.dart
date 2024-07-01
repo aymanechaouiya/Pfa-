@@ -129,6 +129,8 @@ class _TheStartPageWidgetState extends State<TheStartPageWidget>
         ],
       ),
     });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -207,7 +209,7 @@ class _TheStartPageWidgetState extends State<TheStartPageWidget>
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(0.0, 44.0, 0.0, 0.0),
                         child: Text(
-                          'Bien',
+                          'Bienvenue',
                           style: FlutterFlowTheme.of(context)
                               .displaySmall
                               .override(
@@ -252,7 +254,7 @@ class _TheStartPageWidgetState extends State<TheStartPageWidget>
                           onPressed: () async {
                             context.pushNamed('LoginPage');
                           },
-                          text: 'Get Started',
+                          text: 'commencer',
                           options: FFButtonOptions(
                             width: 230.0,
                             height: 52.0,

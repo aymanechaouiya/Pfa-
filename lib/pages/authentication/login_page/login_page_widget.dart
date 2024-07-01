@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -29,8 +30,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
     super.initState();
     _model = createModel(context, () => LoginPageModel());
 
-    _model.emailAddressTextController ??= TextEditingController();
-    _model.emailAddressFocusNode ??= FocusNode();
+    _model.emailTextController ??= TextEditingController();
+    _model.emailFocusNode ??= FocusNode();
 
     _model.passwordTextController ??= TextEditingController();
     _model.passwordFocusNode ??= FocusNode();
@@ -123,6 +124,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
         ],
       ),
     });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -173,54 +176,61 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                     end: const AlignmentDirectional(0, 1.0),
                   ),
                 ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: 100.0,
-                      height: 100.0,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).accent4,
-                        borderRadius: BorderRadius.circular(16.0),
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
+                        child: Container(
+                          width: 100.0,
+                          height: 100.0,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context).accent4,
+                            borderRadius: BorderRadius.circular(16.0),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Icon(
+                              Icons.animation,
+                              color: FlutterFlowTheme.of(context).primary,
+                              size: 44.0,
+                            ),
+                          ),
+                        ).animateOnPageLoad(
+                            animationsMap['containerOnPageLoadAnimation']!),
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Icon(
-                          Icons.animation,
-                          color: FlutterFlowTheme.of(context).primary,
-                          size: 44.0,
-                        ),
+                      Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                        child: Text(
+                          'Sign In',
+                          style: FlutterFlowTheme.of(context)
+                              .headlineSmall
+                              .override(
+                                fontFamily: 'Outfit',
+                                letterSpacing: 0.0,
+                              ),
+                        ).animateOnPageLoad(
+                            animationsMap['textOnPageLoadAnimation1']!),
                       ),
-                    ).animateOnPageLoad(
-                        animationsMap['containerOnPageLoadAnimation']!),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
-                      child: Text(
-                        'Sign In',
-                        style:
-                            FlutterFlowTheme.of(context).headlineSmall.override(
-                                  fontFamily: 'Outfit',
-                                  letterSpacing: 0.0,
-                                ),
-                      ).animateOnPageLoad(
-                          animationsMap['textOnPageLoadAnimation1']!),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
-                      child: Text(
-                        'Bienvenue dans notre\n        appplication',
-                        style:
-                            FlutterFlowTheme.of(context).labelMedium.override(
-                                  fontFamily: 'Readex Pro',
-                                  letterSpacing: 0.0,
-                                ),
-                      ).animateOnPageLoad(
-                          animationsMap['textOnPageLoadAnimation2']!),
-                    ),
-                  ],
+                      Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                        child: Text(
+                          'Bienvenue dans notre\n        appplication',
+                          style:
+                              FlutterFlowTheme.of(context).labelMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
+                        ).animateOnPageLoad(
+                            animationsMap['textOnPageLoadAnimation2']!),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -238,8 +248,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                       child: SizedBox(
                         width: double.infinity,
                         child: TextFormField(
-                          controller: _model.emailAddressTextController,
-                          focusNode: _model.emailAddressFocusNode,
+                          controller: _model.emailTextController,
+                          focusNode: _model.emailFocusNode,
                           autofocus: true,
                           autofillHints: const [AutofillHints.email],
                           obscureText: false,
@@ -290,7 +300,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                     letterSpacing: 0.0,
                                   ),
                           keyboardType: TextInputType.emailAddress,
-                          validator: _model.emailAddressTextControllerValidator
+                          validator: _model.emailTextControllerValidator
                               .asValidator(context),
                         ),
                       ),
@@ -373,11 +383,13 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                       ),
                     ),
                     FlutterFlowDropDown<String>(
-                      controller: _model.dropDownValueController ??=
-                          FormFieldController<String>(null),
-                      options: const ['Admin', 'Patient', 'médecine '],
+                      controller: _model.roleValueController ??=
+                          FormFieldController<String>(
+                        _model.roleValue ??= 'patient',
+                      ),
+                      options: const ['admin', 'patient', 'doctor'],
                       onChanged: (val) =>
-                          setState(() => _model.dropDownValue = val),
+                          setState(() => _model.roleValue = val),
                       width: 342.0,
                       height: 56.0,
                       textStyle:
@@ -385,7 +397,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                                 fontFamily: 'Readex Pro',
                                 letterSpacing: 0.0,
                               ),
-                      hintText: 'selectioner.',
+                      hintText: 'role',
                       icon: Icon(
                         Icons.keyboard_arrow_down_rounded,
                         color: FlutterFlowTheme.of(context).secondaryText,
@@ -411,7 +423,39 @@ class _LoginPageWidgetState extends State<LoginPageWidget>
                             0.0, 20.0, 0.0, 16.0),
                         child: FFButtonWidget(
                           onPressed: () async {
-                            context.pushNamed('dashboardAdmin');
+                            _model.apiResultdhi = await LoginChecksCall.call(
+                              email: _model.emailTextController.text,
+                              password: _model.passwordTextController.text,
+                              role: _model.roleValue,
+                            );
+
+                            if ((_model.apiResultdhi?.succeeded ?? true)) {
+                              if (_model.roleValue == 'admin') {
+                                context.pushNamed('dashboardAdmin');
+                              } else if (_model.roleValue == '\"patient\"') {
+                                context.pushNamed('LoginPage');
+                              } else {
+                                context.pushNamed('dashboardAdmin');
+                              }
+                            } else {
+                              await showDialog(
+                                context: context,
+                                builder: (alertDialogContext) {
+                                  return AlertDialog(
+                                    content: const Text('Error connexion '),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () =>
+                                            Navigator.pop(alertDialogContext),
+                                        child: const Text('Ok'),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            }
+
+                            setState(() {});
                           },
                           text: 'Sign In',
                           options: FFButtonOptions(

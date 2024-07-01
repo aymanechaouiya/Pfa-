@@ -76,6 +76,8 @@ class _ListPatientWidgetState extends State<ListPatientWidget>
           !anim.applyInitialState),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

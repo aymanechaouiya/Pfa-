@@ -22,6 +22,8 @@ class _ProfileAdminWidgetState extends State<ProfileAdminWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ProfileAdminModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

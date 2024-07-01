@@ -1,17 +1,18 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 
+import '/flutter_flow/flutter_flow_util.dart';
 import 'api_manager.dart';
 
 export 'api_manager.dart' show ApiCallResponse;
 
 const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 
-class GetNamesCall {
+class GetMedCall {
   static Future<ApiCallResponse> call() async {
     return ApiManager.instance.makeApiCall(
-      callName: 'GetNames',
-      apiUrl: 'https://fakestoreapi.com/products',
+      callName: 'getMed',
+      apiUrl: 'https://3e98-41-142-97-245.ngrok-free.app/admin/MedcinList',
       callType: ApiCallType.GET,
       headers: {},
       params: {},
@@ -25,14 +26,26 @@ class GetNamesCall {
   }
 }
 
-class GetDatCall {
-  static Future<ApiCallResponse> call() async {
+class LoginChecksCall {
+  static Future<ApiCallResponse> call({
+    String? email = '',
+    String? password = '',
+    String? role = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "email": "$email",
+  "password": "$password",
+  "role": "$role"
+}''';
     return ApiManager.instance.makeApiCall(
-      callName: 'getDat',
-      apiUrl: 'https://chatgpt.com/c/485ababc-77a8-478f-aeb3-38f31c87f28d',
-      callType: ApiCallType.GET,
+      callName: 'LoginChecks',
+      apiUrl: 'http://localhost:3000//api/login',
+      callType: ApiCallType.POST,
       headers: {},
       params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
@@ -41,6 +54,19 @@ class GetDatCall {
       alwaysAllowBody: false,
     );
   }
+
+  static String? username(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.user.nom''',
+      ));
+  static String? password(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.user.mdp''',
+      ));
+  static String? email(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.user.email''',
+      ));
 }
 
 class ApiPagingParams {
