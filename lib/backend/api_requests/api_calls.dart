@@ -8,13 +8,20 @@ export 'api_manager.dart' show ApiCallResponse;
 
 const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 
-class GetMedCall {
+class GetUserRoleCall {
   static Future<ApiCallResponse> call() async {
     return ApiManager.instance.makeApiCall(
-      callName: 'getMed',
-      apiUrl: 'https://3e98-41-142-97-245.ngrok-free.app/admin/MedcinList',
+      callName: 'getUserRole',
+      apiUrl:
+          'https://dzpyohvzxhxlymcdzvzs.supabase.co/rest/v1/user_roles?select=*',
       callType: ApiCallType.GET,
-      headers: {},
+      headers: {
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR6cHlvaHZ6eGh4bHltY2R6dnpzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjAwMzM4MzksImV4cCI6MjAzNTYwOTgzOX0.Dkqxn10HYoxEdvFws-68VLkvtfA_XlEE6xnKDcbOh3Y',
+        'Authorization':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR6cHlvaHZ6eGh4bHltY2R6dnpzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjAwMzM4MzksImV4cCI6MjAzNTYwOTgzOX0.Dkqxn10HYoxEdvFws-68VLkvtfA_XlEE6xnKDcbOh3Y',
+        'Range': '0-9',
+      },
       params: {},
       returnBody: true,
       encodeBodyUtf8: false,
@@ -24,25 +31,38 @@ class GetMedCall {
       alwaysAllowBody: false,
     );
   }
+
+  static List<int>? rolName(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].role''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
 }
 
-class LoginChecksCall {
+class PhonePostCall {
   static Future<ApiCallResponse> call({
-    String? email = '',
+    String? phone = '',
     String? password = '',
-    String? role = '',
   }) async {
     final ffApiRequestBody = '''
 {
-  "email": "$email",
-  "password": "$password",
-  "role": "$role"
+  "phone": "$phone",
+  "password": "$password"
 }''';
     return ApiManager.instance.makeApiCall(
-      callName: 'LoginChecks',
-      apiUrl: 'http://localhost:3000//api/login',
+      callName: 'phone post',
+      apiUrl: 'https://dzpyohvzxhxlymcdzvzs.supabase.co/auth/v1/signup',
       callType: ApiCallType.POST,
-      headers: {},
+      headers: {
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR6cHlvaHZ6eGh4bHltY2R6dnpzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjAwMzM4MzksImV4cCI6MjAzNTYwOTgzOX0.Dkqxn10HYoxEdvFws-68VLkvtfA_XlEE6xnKDcbOh3Y',
+        'Authorization':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR6cHlvaHZ6eGh4bHltY2R6dnpzIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcyMDAzMzgzOSwiZXhwIjoyMDM1NjA5ODM5fQ.-7hmtL1crT75c-fnc7MhMTlegC40nc42R4V1pF-JJGY',
+      },
       params: {},
       body: ffApiRequestBody,
       bodyType: BodyType.JSON,
@@ -54,19 +74,6 @@ class LoginChecksCall {
       alwaysAllowBody: false,
     );
   }
-
-  static String? username(dynamic response) => castToType<String>(getJsonField(
-        response,
-        r'''$.user.nom''',
-      ));
-  static String? password(dynamic response) => castToType<String>(getJsonField(
-        response,
-        r'''$.user.mdp''',
-      ));
-  static String? email(dynamic response) => castToType<String>(getJsonField(
-        response,
-        r'''$.user.email''',
-      ));
 }
 
 class ApiPagingParams {

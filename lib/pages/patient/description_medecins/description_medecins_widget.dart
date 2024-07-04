@@ -1,4 +1,4 @@
-import '/flutter_flow/flutter_flow_calendar.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -8,7 +8,12 @@ import 'description_medecins_model.dart';
 export 'description_medecins_model.dart';
 
 class DescriptionMedecinsWidget extends StatefulWidget {
-  const DescriptionMedecinsWidget({super.key});
+  const DescriptionMedecinsWidget({
+    super.key,
+    required this.getNames,
+  });
+
+  final MedcinsRow? getNames;
 
   @override
   State<DescriptionMedecinsWidget> createState() =>
@@ -244,8 +249,8 @@ class _DescriptionMedecinsWidgetState extends State<DescriptionMedecinsWidget> {
                     children: [
                       ClipRRect(
                         borderRadius: BorderRadius.circular(8.0),
-                        child: Image.asset(
-                          'assets/images/Doc2.jpg',
+                        child: Image.network(
+                          widget.getNames!.pic!,
                           width: 100.0,
                           height: double.infinity,
                           fit: BoxFit.cover,
@@ -261,7 +266,10 @@ class _DescriptionMedecinsWidgetState extends State<DescriptionMedecinsWidget> {
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   5.0, 5.0, 0.0, 0.0),
                               child: Text(
-                                'Dr.Aiman chaouiya',
+                                valueOrDefault<String>(
+                                  widget.getNames?.fullName,
+                                  ',;',
+                                ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
@@ -274,7 +282,10 @@ class _DescriptionMedecinsWidgetState extends State<DescriptionMedecinsWidget> {
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 45.0, 0.0),
                               child: Text(
-                                'Specialité',
+                                valueOrDefault<String>(
+                                  widget.getNames?.specialite,
+                                  'mlml',
+                                ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
@@ -287,7 +298,10 @@ class _DescriptionMedecinsWidgetState extends State<DescriptionMedecinsWidget> {
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 30.0, 0.0),
                               child: Text(
-                                'Localisation',
+                                valueOrDefault<String>(
+                                  widget.getNames?.availiblity,
+                                  'ml',
+                                ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
@@ -308,23 +322,85 @@ class _DescriptionMedecinsWidgetState extends State<DescriptionMedecinsWidget> {
                 child: Container(
                   width: double.infinity,
                   height: 206.0,
+                  constraints: const BoxConstraints(
+                    minWidth: 100.0,
+                  ),
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                   ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Padding(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  5.0, 0.0, 0.0, 0.0),
+                              child: Text(
+                                'Numero tel ',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 5.0, 5.0, 0.0),
+                              child: FlutterFlowIconButton(
+                                borderColor:
+                                    FlutterFlowTheme.of(context).primary,
+                                borderRadius: 20.0,
+                                borderWidth: 1.0,
+                                buttonSize: 40.0,
+                                fillColor: FlutterFlowTheme.of(context).accent1,
+                                icon: Icon(
+                                  Icons.message_rounded,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  size: 24.0,
+                                ),
+                                onPressed: () {
+                                  print('IconButton pressed ...');
+                                },
+                              ),
+                            ),
+                          ].divide(const SizedBox(width: 210.0)),
+                        ),
+                        Align(
+                          alignment: const AlignmentDirectional(-1.0, 0.0),
+                          child: Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 5.0, 0.0, 0.0, 0.0),
                             child: Text(
-                              'Numero tel ',
+                              valueOrDefault<String>(
+                                widget.getNames?.tel?.toString(),
+                                'lmkl',
+                              ),
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                  ),
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: const AlignmentDirectional(-1.0, 0.0),
+                          child: Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                5.0, 10.0, 0.0, 0.0),
+                            child: Text(
+                              'Details',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyLarge
                                   .override(
                                     fontFamily: 'Readex Pro',
                                     letterSpacing: 0.0,
@@ -332,34 +408,15 @@ class _DescriptionMedecinsWidgetState extends State<DescriptionMedecinsWidget> {
                                   ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 5.0, 0.0, 0.0),
-                            child: FlutterFlowIconButton(
-                              borderColor: FlutterFlowTheme.of(context).primary,
-                              borderRadius: 20.0,
-                              borderWidth: 1.0,
-                              buttonSize: 40.0,
-                              fillColor: FlutterFlowTheme.of(context).accent1,
-                              icon: Icon(
-                                Icons.message_rounded,
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                size: 24.0,
-                              ),
-                              onPressed: () {
-                                print('IconButton pressed ...');
-                              },
-                            ),
-                          ),
-                        ].divide(const SizedBox(width: 230.0)),
-                      ),
-                      Align(
-                        alignment: const AlignmentDirectional(-1.0, 0.0),
-                        child: Padding(
+                        ),
+                        Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
-                              5.0, 0.0, 0.0, 0.0),
+                              5.0, 5.0, 0.0, 0.0),
                           child: Text(
-                            '0615640187',
+                            valueOrDefault<String>(
+                              widget.getNames?.descreption,
+                              '21',
+                            ),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
@@ -368,138 +425,57 @@ class _DescriptionMedecinsWidgetState extends State<DescriptionMedecinsWidget> {
                                 ),
                           ),
                         ),
-                      ),
-                      Align(
-                        alignment: const AlignmentDirectional(-1.0, 0.0),
-                        child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              5.0, 10.0, 0.0, 0.0),
-                          child: Text(
-                            'Details',
-                            style:
-                                FlutterFlowTheme.of(context).bodyLarge.override(
-                                      fontFamily: 'Readex Pro',
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                        Align(
+                          alignment: const AlignmentDirectional(-1.0, 0.0),
+                          child: Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                5.0, 5.0, 0.0, 0.0),
+                            child: Text(
+                              'Services',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyLarge
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
                           ),
                         ),
-                      ),
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 0.0, 0.0),
-                        child: Text(
-                          'Dr. Jane Smith is a board-certified internal medicine physician with over 15 years of experience. ',
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
+                        Align(
+                          alignment: const AlignmentDirectional(-1.0, 0.0),
+                          child: Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                5.0, 5.0, 0.0, 0.0),
+                            child: Text(
+                              'Consultation ..',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
                                     fontFamily: 'Readex Pro',
                                     letterSpacing: 0.0,
                                   ),
-                        ),
-                      ),
-                      Align(
-                        alignment: const AlignmentDirectional(-1.0, 0.0),
-                        child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              5.0, 5.0, 0.0, 0.0),
-                          child: Text(
-                            'Services',
-                            style:
-                                FlutterFlowTheme.of(context).bodyLarge.override(
-                                      fontFamily: 'Readex Pro',
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                            ),
                           ),
                         ),
-                      ),
-                      Align(
-                        alignment: const AlignmentDirectional(-1.0, 0.0),
-                        child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              5.0, 5.0, 0.0, 0.0),
-                          child: Text(
-                            'Consultation ..',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  letterSpacing: 0.0,
-                                ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Align(
-                alignment: const AlignmentDirectional(-1.0, 0.0),
-                child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(5.0, 10.0, 0.0, 0.0),
-                  child: Text(
-                    'Date',
-                    style: FlutterFlowTheme.of(context).bodyLarge.override(
-                          fontFamily: 'Readex Pro',
-                          letterSpacing: 0.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                  ),
-                ),
-              ),
-              FlutterFlowCalendar(
-                color: FlutterFlowTheme.of(context).primary,
-                iconColor: FlutterFlowTheme.of(context).secondaryText,
-                weekFormat: true,
-                weekStartsMonday: true,
-                initialDate: getCurrentTimestamp,
-                rowHeight: 64.0,
-                onChange: (DateTimeRange? newSelectedDate) {
-                  setState(() => _model.calendarSelectedDay = newSelectedDate);
-                },
-                titleStyle: FlutterFlowTheme.of(context).headlineSmall.override(
-                      fontFamily: 'Outfit',
-                      letterSpacing: 0.0,
+                      ],
                     ),
-                dayOfWeekStyle:
-                    FlutterFlowTheme.of(context).labelLarge.override(
-                          fontFamily: 'Readex Pro',
-                          letterSpacing: 0.0,
-                        ),
-                dateStyle: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Readex Pro',
-                      letterSpacing: 0.0,
-                    ),
-                selectedDateStyle:
-                    FlutterFlowTheme.of(context).titleSmall.override(
-                          fontFamily: 'Readex Pro',
-                          letterSpacing: 0.0,
-                        ),
-                inactiveDateStyle:
-                    FlutterFlowTheme.of(context).labelMedium.override(
-                          fontFamily: 'Readex Pro',
-                          letterSpacing: 0.0,
-                        ),
-              ),
-              Align(
-                alignment: const AlignmentDirectional(-1.0, 0.0),
-                child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(5.0, 10.0, 0.0, 0.0),
-                  child: Text(
-                    'Temp',
-                    style: FlutterFlowTheme.of(context).bodyLarge.override(
-                          fontFamily: 'Readex Pro',
-                          letterSpacing: 0.0,
-                          fontWeight: FontWeight.bold,
-                        ),
                   ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 150.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                 child: FFButtonWidget(
                   onPressed: () async {
-                    context.pushNamed('AppointemenList');
+                    context.pushNamed(
+                      'CreerRendueVouz',
+                      queryParameters: {
+                        'getNameDoctors': serializeParam(
+                          widget.getNames,
+                          ParamType.SupabaseRow,
+                        ),
+                      }.withoutNulls,
+                    );
                   },
                   text: 'Rendez vous!!!',
                   options: FFButtonOptions(

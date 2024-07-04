@@ -3,7 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '/auth/custom_auth/custom_auth_user_provider.dart';
+import '/backend/supabase/supabase.dart';
+
+import '/auth/base_auth_user_provider.dart';
 
 import '/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -20,8 +22,8 @@ class AppStateNotifier extends ChangeNotifier {
   static AppStateNotifier? _instance;
   static AppStateNotifier get instance => _instance ??= AppStateNotifier._();
 
-  PatientUiAuthUser? initialUser;
-  PatientUiAuthUser? user;
+  BaseAuthUser? initialUser;
+  BaseAuthUser? user;
   bool showSplashImage = true;
   String? _redirectLocation;
 
@@ -46,7 +48,7 @@ class AppStateNotifier extends ChangeNotifier {
   /// to perform subsequent actions (such as navigation) afterwards.
   void updateNotifyOnAuthChange(bool notify) => notifyOnAuthChange = notify;
 
-  void update(PatientUiAuthUser newUser) {
+  void update(BaseAuthUser newUser) {
     final shouldUpdate =
         user?.uid == null || newUser.uid == null || user?.uid != newUser.uid;
     initialUser ??= newUser;
@@ -82,11 +84,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : const TheStartPageWidget(),
         ),
         FFRoute(
-          name: 'HomePage',
-          path: '/homePage',
-          builder: (context, params) => const HomePageWidget(),
-        ),
-        FFRoute(
           name: 'PatientMainPage',
           path: '/patientMainPage',
           builder: (context, params) => const PatientMainPageWidget(),
@@ -94,7 +91,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'DescriptionMedecins',
           path: '/descriptionMedecins',
-          builder: (context, params) => const DescriptionMedecinsWidget(),
+          builder: (context, params) => DescriptionMedecinsWidget(
+            getNames: params.getParam<MedcinsRow>(
+              'getNames',
+              ParamType.SupabaseRow,
+            ),
+          ),
         ),
         FFRoute(
           name: 'AppointemenList',
@@ -112,11 +114,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const DashboardAdminWidget(),
         ),
         FFRoute(
-          name: 'ListPatient',
-          path: '/listPatient',
-          builder: (context, params) => const ListPatientWidget(),
-        ),
-        FFRoute(
           name: 'CreatIionPatient',
           path: '/creatIionPatient',
           builder: (context, params) => const CreatIionPatientWidget(),
@@ -124,22 +121,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'EditPatient',
           path: '/editPatient',
-          builder: (context, params) => const EditPatientWidget(),
+          builder: (context, params) => EditPatientWidget(
+            getAllPatients: params.getParam<MaladiesRow>(
+              'getAllPatients',
+              ParamType.SupabaseRow,
+            ),
+          ),
         ),
         FFRoute(
-          name: 'CreateDoctors',
-          path: '/createDoctors',
-          builder: (context, params) => const CreateDoctorsWidget(),
-        ),
-        FFRoute(
-          name: 'ListsDoctors',
-          path: '/listsDoctors',
-          builder: (context, params) => const ListsDoctorsWidget(),
-        ),
-        FFRoute(
-          name: 'UpdateDoctors',
-          path: '/updateDoctors',
-          builder: (context, params) => const UpdateDoctorsWidget(),
+          name: 'CreatDoctores',
+          path: '/CreateProfiles',
+          builder: (context, params) => const CreatDoctoresWidget(),
         ),
         FFRoute(
           name: 'ProfileAdmin',
@@ -160,6 +152,76 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'ProfilePatient',
           path: '/profilePatient',
           builder: (context, params) => const ProfilePatientWidget(),
+        ),
+        FFRoute(
+          name: 'listMedcines',
+          path: '/listMedcines',
+          builder: (context, params) => const ListMedcinesWidget(),
+        ),
+        FFRoute(
+          name: 'listesPatient',
+          path: '/listesPatient',
+          builder: (context, params) => const ListesPatientWidget(),
+        ),
+        FFRoute(
+          name: 'EditDoctors',
+          path: '/EditDoctors',
+          builder: (context, params) => EditDoctorsWidget(
+            getAllDoc: params.getParam<MedcinsRow>(
+              'getAllDoc',
+              ParamType.SupabaseRow,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'dashboard_medecin',
+          path: '/dashboardMedecin',
+          builder: (context, params) => const DashboardMedecinWidget(),
+        ),
+        FFRoute(
+          name: 'liste_patients',
+          path: '/listePatients',
+          builder: (context, params) => const ListePatientsWidget(),
+        ),
+        FFRoute(
+          name: 'creer_ordonnance',
+          path: '/creerOrdonnance',
+          builder: (context, params) => const CreerOrdonnanceWidget(),
+        ),
+        FFRoute(
+          name: 'listeOrdonnances',
+          path: '/listeOrdonnances',
+          builder: (context, params) => const ListeOrdonnancesWidget(),
+        ),
+        FFRoute(
+          name: 'dossier_medical',
+          path: '/dossierMedical',
+          builder: (context, params) => const DossierMedicalWidget(),
+        ),
+        FFRoute(
+          name: 'listerRendezvous',
+          path: '/listerRendezvous',
+          builder: (context, params) => const ListerRendezvousWidget(),
+        ),
+        FFRoute(
+          name: 'notifications',
+          path: '/notifications',
+          builder: (context, params) => const NotificationsWidget(),
+        ),
+        FFRoute(
+          name: 'notification_patientt',
+          path: '/notificationPatientt',
+          builder: (context, params) => const NotificationPatienttWidget(),
+        ),
+        FFRoute(
+          name: 'CreerRendueVouz',
+          path: '/creerRendueVouz',
+          builder: (context, params) => CreerRendueVouzWidget(
+            getNameDoctors: params.getParam<MedcinsRow>(
+              'getNameDoctors',
+              ParamType.SupabaseRow,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

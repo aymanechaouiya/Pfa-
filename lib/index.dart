@@ -1,5 +1,4 @@
 // Export pages
-export '/pages/home_page/home_page_widget.dart' show HomePageWidget;
 export '/pages/patient/patient_main_page/patient_main_page_widget.dart'
     show PatientMainPageWidget;
 export '/pages/patient/description_medecins/description_medecins_widget.dart'
@@ -8,21 +7,43 @@ export '/pages/patient/appointemen_list/appointemen_list_widget.dart'
     show AppointemenListWidget;
 export '/pages/patient/list_ordonance/list_ordonance_widget.dart'
     show ListOrdonanceWidget;
-export '/admin/dashboard_admin/dashboard_admin_widget.dart'
+export '/pages/admin/dashboard_admin/dashboard_admin_widget.dart'
     show DashboardAdminWidget;
-export '/admin/list_patient/list_patient_widget.dart' show ListPatientWidget;
-export '/admin/creat_iion_patient/creat_iion_patient_widget.dart'
+export '/pages/admin/creat_iion_patient/creat_iion_patient_widget.dart'
     show CreatIionPatientWidget;
-export '/edit_patient/edit_patient_widget.dart' show EditPatientWidget;
-export '/admin/create_doctors/create_doctors_widget.dart'
-    show CreateDoctorsWidget;
-export '/admin/lists_doctors/lists_doctors_widget.dart' show ListsDoctorsWidget;
-export '/admin/update_doctors/update_doctors_widget.dart'
-    show UpdateDoctorsWidget;
-export '/admin/profile_admin/profile_admin_widget.dart' show ProfileAdminWidget;
+export '/pages/admin/edit_patient/edit_patient_widget.dart'
+    show EditPatientWidget;
+export '/pages/admin/creat_doctores/creat_doctores_widget.dart'
+    show CreatDoctoresWidget;
+export '/pages/admin/profile_admin/profile_admin_widget.dart'
+    show ProfileAdminWidget;
 export '/pages/authentication/login_page/login_page_widget.dart'
     show LoginPageWidget;
 export '/pages/authentication/the_start_page/the_start_page_widget.dart'
     show TheStartPageWidget;
 export '/pages/patient/profile_patient/profile_patient_widget.dart'
     show ProfilePatientWidget;
+export '/pages/admin/list_medcines/list_medcines_widget.dart'
+    show ListMedcinesWidget;
+export '/pages/admin/listes_patient/listes_patient_widget.dart'
+    show ListesPatientWidget;
+export '/pages/admin/edit_doctors/edit_doctors_widget.dart'
+    show EditDoctorsWidget;
+export '/pages/medecin/dashboard_medecin/dashboard_medecin_widget.dart'
+    show DashboardMedecinWidget;
+export '/pages/medecin/liste_patients/liste_patients_widget.dart'
+    show ListePatientsWidget;
+export '/pages/medecin/creer_ordonnance/creer_ordonnance_widget.dart'
+    show CreerOrdonnanceWidget;
+export '/pages/medecin/liste_ordonnances/liste_ordonnances_widget.dart'
+    show ListeOrdonnancesWidget;
+export '/pages/medecin/dossier_medical/dossier_medical_widget.dart'
+    show DossierMedicalWidget;
+export '/pages/medecin/lister_rendezvous/lister_rendezvous_widget.dart'
+    show ListerRendezvousWidget;
+export '/pages/medecin/notifications/notifications_widget.dart'
+    show NotificationsWidget;
+export '/pages/patient/notification_patientt/notification_patientt_widget.dart'
+    show NotificationPatienttWidget;
+export '/pages/patient/creer_rendue_vouz/creer_rendue_vouz_widget.dart'
+    show CreerRendueVouzWidget;

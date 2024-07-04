@@ -187,7 +187,7 @@ class _AppointemenListWidgetState extends State<AppointemenListWidget>
                                         padding: const EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 0.0, 0.0),
                                         child: Text(
-                                          'Dr.Nom',
+                                          'Dr. max bilme',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyLarge
                                               .override(
@@ -207,7 +207,7 @@ class _AppointemenListWidgetState extends State<AppointemenListWidget>
                                                   .fromSTEB(
                                                       12.0, 0.0, 0.0, 0.0),
                                               child: Text(
-                                                'Temp',
+                                                '10am | 01/07/24',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .labelMedium
@@ -310,7 +310,7 @@ class _AppointemenListWidgetState extends State<AppointemenListWidget>
                                                   .fromSTEB(
                                                       12.0, 0.0, 0.0, 0.0),
                                               child: Text(
-                                                'Temp',
+                                                '12pm | 01/07/24',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .labelMedium
@@ -413,7 +413,7 @@ class _AppointemenListWidgetState extends State<AppointemenListWidget>
                                                   .fromSTEB(
                                                       12.0, 0.0, 0.0, 0.0),
                                               child: Text(
-                                                'Temp',
+                                                '11am | 01/08/24',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .labelMedium
