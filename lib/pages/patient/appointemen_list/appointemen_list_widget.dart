@@ -168,15 +168,6 @@ class _AppointemenListWidgetState extends State<AppointemenListWidget>
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(40.0),
-                                  child: Image.asset(
-                                    'assets/images/Doc2.jpg',
-                                    width: 60.0,
-                                    height: 60.0,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
                                 Expanded(
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -271,15 +262,6 @@ class _AppointemenListWidgetState extends State<AppointemenListWidget>
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(40.0),
-                                  child: Image.asset(
-                                    'assets/images/doc3.jpg',
-                                    width: 60.0,
-                                    height: 60.0,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
                                 Expanded(
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -374,15 +356,6 @@ class _AppointemenListWidgetState extends State<AppointemenListWidget>
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(40.0),
-                                  child: Image.asset(
-                                    'assets/images/doc1.png',
-                                    width: 60.0,
-                                    height: 60.0,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
                                 Expanded(
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,

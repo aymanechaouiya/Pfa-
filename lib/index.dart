@@ -7,7 +7,7 @@ export '/pages/patient/appointemen_list/appointemen_list_widget.dart'
     show AppointemenListWidget;
 export '/pages/patient/list_ordonance/list_ordonance_widget.dart'
     show ListOrdonanceWidget;
-export '/pages/dashboard_admin/dashboard_admin_widget.dart'
+export '/pages/admin/dashboard_admin/dashboard_admin_widget.dart'
     show DashboardAdminWidget;
 export '/pages/admin/creat_iion_patient/creat_iion_patient_widget.dart'
     show CreatIionPatientWidget;
@@ -53,3 +53,4 @@ export '/pages/medecin/update_password_medecin/update_password_medecin_widget.da
     show UpdatePasswordMedecinWidget;
 export '/pages/patient/update_password_patient/update_password_patient_widget.dart'
     show UpdatePasswordPatientWidget;
+export '/pages/testing/crud/crud_widget.dart' show CrudWidget;
