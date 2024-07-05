@@ -49,15 +49,6 @@ class _CardMedcinsWidgetState extends State<CardMedcinsWidget> {
         child: Row(
           mainAxisSize: MainAxisSize.max,
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8.0),
-              child: Image.asset(
-                'assets/images/Doc2.jpg',
-                width: 70.0,
-                height: 70.0,
-                fit: BoxFit.cover,
-              ),
-            ),
             Column(
               mainAxisSize: MainAxisSize.max,
               children: [

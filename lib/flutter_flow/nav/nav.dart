@@ -242,6 +242,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'crud',
           path: '/crud',
           builder: (context, params) => const CrudWidget(),
+        ),
+        FFRoute(
+          name: 'List07UserSearch',
+          path: '/list07UserSearch',
+          builder: (context, params) => const List07UserSearchWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

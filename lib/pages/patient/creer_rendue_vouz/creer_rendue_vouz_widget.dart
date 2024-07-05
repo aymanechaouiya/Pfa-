@@ -1,3 +1,4 @@
+import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -383,11 +384,23 @@ class _CreerRendueVouzWidgetState extends State<CreerRendueVouzWidget> {
                   padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                   child: FFButtonWidget(
                     onPressed: () async {
+                      await MedcinsTable().update(
+                        data: {
+                          'temp': supaSerialize<PostgresTime>(
+                              PostgresTime(_model.datePicked1)),
+                          'nom patient': _model.textController1.text,
+                          'descreptions': _model.textController2.text,
+                        },
+                        matchingRows: (rows) => rows.eq(
+                          'id',
+                          widget.getNameDoctors?.id,
+                        ),
+                      );
                       await RendezVousTable().insert({
-                        'patient nom': _model.textController1.text,
-                        'temp': supaSerialize<DateTime>(_model.datePicked1),
-                        'date': supaSerialize<DateTime>(_model.datePicked2),
-                        'medcines': widget.getNameDoctors?.id,
+                        'date': supaSerialize<DateTime>(_model.datePicked1),
+                        'nom medcines': widget.getNameDoctors?.fullName,
+                        'pic_med': widget.getNameDoctors?.pic,
+                        'email_patient': currentUserEmail,
                       });
                       var confirmDialogResponse = await showDialog<bool>(
                             context: context,
@@ -413,7 +426,7 @@ class _CreerRendueVouzWidgetState extends State<CreerRendueVouzWidget> {
                           false;
 
                       context.pushNamed(
-                        'listerRendezvous',
+                        'List07UserSearch',
                         extra: <String, dynamic>{
                           kTransitionInfoKey: const TransitionInfo(
                             hasTransition: true,
