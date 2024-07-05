@@ -213,12 +213,16 @@ dynamic deserializeParam<T>(
             return TestRow(data);
           case MaladiesRow:
             return MaladiesRow(data);
+          case DoctorsRow:
+            return DoctorsRow(data);
           case AdminRow:
             return AdminRow(data);
           case PublicUsersRow:
             return PublicUsersRow(data);
           case PublicUserRow:
             return PublicUserRow(data);
+          case PatientsRow:
+            return PatientsRow(data);
           default:
             return null;
         }

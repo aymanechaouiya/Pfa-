@@ -102,18 +102,6 @@ class _ProfileAdminWidgetState extends State<ProfileAdminWidget> {
                           color: FlutterFlowTheme.of(context).alternate,
                           borderRadius: BorderRadius.circular(12.0),
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(2.0),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(10.0),
-                            child: Image.asset(
-                              'assets/images/doc3.jpg',
-                              width: 100.0,
-                              height: 100.0,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
                       ),
                       Padding(
                         padding:

@@ -237,6 +237,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'update_password_patient',
           path: '/updatePasswordPatient',
           builder: (context, params) => const UpdatePasswordPatientWidget(),
+        ),
+        FFRoute(
+          name: 'crud',
+          path: '/crud',
+          builder: (context, params) => const CrudWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
