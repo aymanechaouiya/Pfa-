@@ -49,3 +49,7 @@ export '/pages/patient/creer_rendue_vouz/creer_rendue_vouz_widget.dart'
     show CreerRendueVouzWidget;
 export '/pages/admin/update_password_admin/update_password_admin_widget.dart'
     show UpdatePasswordAdminWidget;
+export '/pages/medecin/update_password_medecin/update_password_medecin_widget.dart'
+    show UpdatePasswordMedecinWidget;
+export '/pages/patient/update_password_patient/update_password_patient_widget.dart'
+    show UpdatePasswordPatientWidget;

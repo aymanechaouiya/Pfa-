@@ -227,6 +227,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'update_password_admin',
           path: '/updatePasswordAdmin',
           builder: (context, params) => const UpdatePasswordAdminWidget(),
+        ),
+        FFRoute(
+          name: 'update_password_medecin',
+          path: '/updatePasswordMedecin',
+          builder: (context, params) => const UpdatePasswordMedecinWidget(),
+        ),
+        FFRoute(
+          name: 'update_password_patient',
+          path: '/updatePasswordPatient',
+          builder: (context, params) => const UpdatePasswordPatientWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
