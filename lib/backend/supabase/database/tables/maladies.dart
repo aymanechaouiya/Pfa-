@@ -34,4 +34,7 @@ class MaladiesRow extends SupabaseDataRow {
 
   int? get tel => getField<int>('tel');
   set tel(int? value) => setField<int>('tel', value);
+
+  String? get patientId => getField<String>('patient_id');
+  set patientId(String? value) => setField<String>('patient_id', value);
 }
