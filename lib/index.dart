@@ -47,3 +47,5 @@ export '/pages/patient/notification_patientt/notification_patientt_widget.dart'
     show NotificationPatienttWidget;
 export '/pages/patient/creer_rendue_vouz/creer_rendue_vouz_widget.dart'
     show CreerRendueVouzWidget;
+export '/pages/admin/update_password_admin/update_password_admin_widget.dart'
+    show UpdatePasswordAdminWidget;

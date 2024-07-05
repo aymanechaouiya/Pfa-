@@ -222,6 +222,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.SupabaseRow,
             ),
           ),
+        ),
+        FFRoute(
+          name: 'update_password_admin',
+          path: '/updatePasswordAdmin',
+          builder: (context, params) => const UpdatePasswordAdminWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
