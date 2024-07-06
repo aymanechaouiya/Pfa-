@@ -238,7 +238,7 @@ class _ListePatientsWidgetState extends State<ListePatientsWidget>
                                             child: Text(
                                               valueOrDefault<String>(
                                                 listViewMedcinsRow.patientName,
-                                                'patient',
+                                                'non patient',
                                               ).maybeHandleOverflow(
                                                   maxChars: 7),
                                               style:
@@ -266,7 +266,7 @@ class _ListePatientsWidgetState extends State<ListePatientsWidget>
                                                     valueOrDefault<String>(
                                                       listViewMedcinsRow
                                                           .patientName,
-                                                      'Pat',
+                                                      'non patient',
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)

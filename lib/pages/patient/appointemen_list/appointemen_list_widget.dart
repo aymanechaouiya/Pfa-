@@ -252,28 +252,7 @@ class _AppointemenListWidgetState extends State<AppointemenListWidget>
                                                       listViewRendezVousRow
                                                           .dates
                                                           ?.toString(),
-                                                      'jk',
-                                                    ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .labelMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          12.0, 0.0, 0.0, 0.0),
-                                                  child: Text(
-                                                    valueOrDefault<String>(
-                                                      listViewRendezVousRow
-                                                          .temps?.time
-                                                          ?.toString(),
-                                                      'jk',
+                                                      'al',
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
