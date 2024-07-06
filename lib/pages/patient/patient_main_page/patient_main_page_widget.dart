@@ -322,37 +322,6 @@ class _PatientMainPageWidgetState extends State<PatientMainPageWidget> {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      const Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [],
-                      ),
-                      const Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [],
-                      ),
-                      const Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [],
-                      ),
-                      const Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [],
-                      ),
-                      const Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [],
-                      ),
-                    ].divide(const SizedBox(width: 15.0)),
-                  ),
-                ),
-              ),
               Align(
                 alignment: const AlignmentDirectional(-1.0, 0.0),
                 child: Padding(

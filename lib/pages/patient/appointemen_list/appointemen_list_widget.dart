@@ -249,7 +249,29 @@ class _AppointemenListWidgetState extends State<AppointemenListWidget>
                                                           12.0, 0.0, 0.0, 0.0),
                                                   child: Text(
                                                     valueOrDefault<String>(
-                                                      listViewRendezVousRow.temp
+                                                      listViewRendezVousRow
+                                                          .dates
+                                                          ?.toString(),
+                                                      'jk',
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          12.0, 0.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    valueOrDefault<String>(
+                                                      listViewRendezVousRow
+                                                          .temps?.time
                                                           ?.toString(),
                                                       'jk',
                                                     ),
@@ -280,11 +302,25 @@ class _AppointemenListWidgetState extends State<AppointemenListWidget>
                                       ),
                                       child: Padding(
                                         padding: const EdgeInsets.all(4.0),
-                                        child: Icon(
-                                          Icons.delete_sharp,
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          size: 24.0,
+                                        child: InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            await RendezVousTable().delete(
+                                              matchingRows: (rows) => rows.eq(
+                                                'email_patient',
+                                                currentUserEmail,
+                                              ),
+                                            );
+                                          },
+                                          child: Icon(
+                                            Icons.delete_sharp,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            size: 24.0,
+                                          ),
                                         ),
                                       ),
                                     ),

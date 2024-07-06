@@ -1,5 +1,6 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
+import '/flutter_flow/flutter_flow_calendar.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -195,220 +196,191 @@ class _CreerRendueVouzWidgetState extends State<CreerRendueVouzWidget> {
                   ),
                 ),
                 Padding(
-                  padding:
-                      const EdgeInsetsDirectional.fromSTEB(16.0, 10.0, 16.0, 0.0),
-                  child: InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      final datePicked1Date = await showDatePicker(
-                        context: context,
-                        initialDate: getCurrentTimestamp,
-                        firstDate: getCurrentTimestamp,
-                        lastDate: DateTime(2050),
-                        builder: (context, child) {
-                          return wrapInMaterialDatePickerTheme(
-                            context,
-                            child!,
-                            headerBackgroundColor:
-                                FlutterFlowTheme.of(context).primary,
-                            headerForegroundColor:
-                                FlutterFlowTheme.of(context).info,
-                            headerTextStyle: FlutterFlowTheme.of(context)
-                                .headlineLarge
-                                .override(
-                                  fontFamily: 'Outfit',
-                                  fontSize: 32.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                            pickerBackgroundColor: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            pickerForegroundColor:
-                                FlutterFlowTheme.of(context).primaryText,
-                            selectedDateTimeBackgroundColor:
-                                FlutterFlowTheme.of(context).primary,
-                            selectedDateTimeForegroundColor:
-                                FlutterFlowTheme.of(context).info,
-                            actionButtonForegroundColor:
-                                FlutterFlowTheme.of(context).primaryText,
-                            iconSize: 24.0,
-                          );
-                        },
-                      );
-
-                      if (datePicked1Date != null) {
-                        safeSetState(() {
-                          _model.datePicked1 = DateTime(
-                            datePicked1Date.year,
-                            datePicked1Date.month,
-                            datePicked1Date.day,
-                          );
-                        });
-                      }
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                  child: FlutterFlowCalendar(
+                    color: FlutterFlowTheme.of(context).primary,
+                    iconColor: FlutterFlowTheme.of(context).secondaryText,
+                    weekFormat: true,
+                    weekStartsMonday: true,
+                    initialDate: getCurrentTimestamp,
+                    rowHeight: 64.0,
+                    onChange: (DateTimeRange? newSelectedDate) {
+                      setState(
+                          () => _model.calendarSelectedDay = newSelectedDate);
                     },
-                    child: Container(
-                      width: double.infinity,
-                      height: 50.0,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.0),
-                        border: Border.all(
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          width: 2.0,
-                        ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            12.0, 10.0, 12.0, 5.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Select Date',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodySmall
-                                  .override(
-                                    fontFamily: 'Readex Pro',
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
-                                  ),
+                    titleStyle:
+                        FlutterFlowTheme.of(context).headlineSmall.override(
+                              fontFamily: 'Outfit',
+                              letterSpacing: 0.0,
                             ),
-                            Icon(
-                              Icons.date_range_outlined,
-                              color: FlutterFlowTheme.of(context).secondaryText,
-                              size: 24.0,
+                    dayOfWeekStyle:
+                        FlutterFlowTheme.of(context).labelLarge.override(
+                              fontFamily: 'Readex Pro',
+                              letterSpacing: 0.0,
                             ),
-                          ],
+                    dateStyle: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Readex Pro',
+                          letterSpacing: 0.0,
                         ),
-                      ),
-                    ),
+                    selectedDateStyle:
+                        FlutterFlowTheme.of(context).titleSmall.override(
+                              fontFamily: 'Readex Pro',
+                              letterSpacing: 0.0,
+                            ),
+                    inactiveDateStyle:
+                        FlutterFlowTheme.of(context).labelMedium.override(
+                              fontFamily: 'Readex Pro',
+                              letterSpacing: 0.0,
+                            ),
+                  ),
+                ),
+                Align(
+                  alignment: const AlignmentDirectional(-1.0, -1.0),
+                  child: Text(
+                    'Selctioner un temp',
+                    style: FlutterFlowTheme.of(context).bodyLarge.override(
+                          fontFamily: 'Readex Pro',
+                          letterSpacing: 0.0,
+                        ),
                   ),
                 ),
                 Padding(
-                  padding:
-                      const EdgeInsetsDirectional.fromSTEB(16.0, 10.0, 16.0, 0.0),
-                  child: InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      final datePicked2Time = await showTimePicker(
-                        context: context,
-                        initialTime:
-                            TimeOfDay.fromDateTime(getCurrentTimestamp),
-                        builder: (context, child) {
-                          return wrapInMaterialTimePickerTheme(
-                            context,
-                            child!,
-                            headerBackgroundColor:
-                                FlutterFlowTheme.of(context).primary,
-                            headerForegroundColor:
-                                FlutterFlowTheme.of(context).info,
-                            headerTextStyle: FlutterFlowTheme.of(context)
-                                .headlineLarge
-                                .override(
-                                  fontFamily: 'Outfit',
-                                  fontSize: 32.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                            pickerBackgroundColor: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            pickerForegroundColor:
-                                FlutterFlowTheme.of(context).primaryText,
-                            selectedDateTimeBackgroundColor:
-                                FlutterFlowTheme.of(context).primary,
-                            selectedDateTimeForegroundColor:
-                                FlutterFlowTheme.of(context).info,
-                            actionButtonForegroundColor:
-                                FlutterFlowTheme.of(context).primaryText,
-                            iconSize: 24.0,
-                          );
-                        },
-                      );
-                      if (datePicked2Time != null) {
-                        safeSetState(() {
-                          _model.datePicked2 = DateTime(
-                            getCurrentTimestamp.year,
-                            getCurrentTimestamp.month,
-                            getCurrentTimestamp.day,
-                            datePicked2Time.hour,
-                            datePicked2Time.minute,
-                          );
-                        });
-                      }
-                    },
-                    child: Container(
-                      width: double.infinity,
-                      height: 50.0,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.0),
-                        border: Border.all(
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          width: 2.0,
-                        ),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                  child: FutureBuilder<List<SlotsRow>>(
+                    future: SlotsTable().queryRows(
+                      queryFn: (q) => q.eq(
+                        'id_doctors',
+                        widget.getNameDoctors?.id,
                       ),
-                      child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            12.0, 10.0, 12.0, 5.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Select Time',
+                    ),
+                    builder: (context, snapshot) {
+                      // Customize what your widget looks like when it's loading.
+                      if (!snapshot.hasData) {
+                        return Center(
+                          child: SizedBox(
+                            width: 50.0,
+                            height: 50.0,
+                            child: CircularProgressIndicator(
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                FlutterFlowTheme.of(context).primary,
+                              ),
+                            ),
+                          ),
+                        );
+                      }
+                      List<SlotsRow> rowSlotsRowList = snapshot.data!;
+                      return Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children:
+                            List.generate(rowSlotsRowList.length, (rowIndex) {
+                          final rowSlotsRow = rowSlotsRowList[rowIndex];
+                          return InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              final datePickedTime = await showTimePicker(
+                                context: context,
+                                initialTime:
+                                    TimeOfDay.fromDateTime(getCurrentTimestamp),
+                                builder: (context, child) {
+                                  return wrapInMaterialTimePickerTheme(
+                                    context,
+                                    child!,
+                                    headerBackgroundColor:
+                                        FlutterFlowTheme.of(context).primary,
+                                    headerForegroundColor:
+                                        FlutterFlowTheme.of(context).info,
+                                    headerTextStyle:
+                                        FlutterFlowTheme.of(context)
+                                            .headlineLarge
+                                            .override(
+                                              fontFamily: 'Outfit',
+                                              fontSize: 32.0,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                    pickerBackgroundColor:
+                                        FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                    pickerForegroundColor:
+                                        FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                    selectedDateTimeBackgroundColor:
+                                        FlutterFlowTheme.of(context).primary,
+                                    selectedDateTimeForegroundColor:
+                                        FlutterFlowTheme.of(context).info,
+                                    actionButtonForegroundColor:
+                                        FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                    iconSize: 24.0,
+                                  );
+                                },
+                              );
+                              if (datePickedTime != null) {
+                                safeSetState(() {
+                                  _model.datePicked = DateTime(
+                                    getCurrentTimestamp.year,
+                                    getCurrentTimestamp.month,
+                                    getCurrentTimestamp.day,
+                                    datePickedTime.hour,
+                                    datePickedTime.minute,
+                                  );
+                                });
+                              }
+                            },
+                            child: Text(
+                              valueOrDefault<String>(
+                                rowSlotsRow.startTime?.time?.toString(),
+                                'klj',
+                              ),
                               style: FlutterFlowTheme.of(context)
-                                  .bodySmall
+                                  .bodyMedium
                                   .override(
                                     fontFamily: 'Readex Pro',
                                     letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
                                   ),
                             ),
-                            Icon(
-                              Icons.access_time_outlined,
-                              color: FlutterFlowTheme.of(context).secondaryText,
-                              size: 24.0,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+                          );
+                        }).divide(const SizedBox(width: 10.0)),
+                      );
+                    },
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                   child: FFButtonWidget(
                     onPressed: () async {
+                      await RendezVousTable().insert({
+                        'dates': supaSerialize<DateTime>(
+                            _model.calendarSelectedDay?.start),
+                        'temps': supaSerialize<PostgresTime>(
+                            PostgresTime(_model.datePicked)),
+                        'email_patient': currentUserEmail,
+                        'nom medcines': widget.getNameDoctors?.fullName,
+                        'id_med': widget.getNameDoctors?.id,
+                      });
                       await MedcinsTable().update(
                         data: {
                           'temp': supaSerialize<PostgresTime>(
-                              PostgresTime(_model.datePicked1)),
-                          'nom patient': _model.textController1.text,
-                          'descreptions': _model.textController2.text,
+                              PostgresTime(_model.datePicked)),
                           'patient_name': currentUserEmail,
+                          'date': supaSerialize<DateTime>(
+                              _model.calendarSelectedDay?.start),
+                          'descreption': _model.textController1.text,
                         },
                         matchingRows: (rows) => rows.eq(
                           'id',
                           widget.getNameDoctors?.id,
                         ),
                       );
-                      await RendezVousTable().insert({
-                        'date': supaSerialize<DateTime>(_model.datePicked1),
-                        'nom medcines': widget.getNameDoctors?.fullName,
-                        'pic_med': widget.getNameDoctors?.pic,
-                        'email_patient': currentUserEmail,
-                      });
                       var confirmDialogResponse = await showDialog<bool>(
                             context: context,
                             builder: (alertDialogContext) {
                               return AlertDialog(
                                 title: const Text('success'),
-                                content: const Text('sucess'),
+                                content: const Text('voir votre rendez vouz'),
                                 actions: [
                                   TextButton(
                                     onPressed: () => Navigator.pop(
@@ -426,15 +398,7 @@ class _CreerRendueVouzWidgetState extends State<CreerRendueVouzWidget> {
                           ) ??
                           false;
 
-                      context.pushNamed(
-                        'AppointemenList',
-                        extra: <String, dynamic>{
-                          kTransitionInfoKey: const TransitionInfo(
-                            hasTransition: true,
-                            transitionType: PageTransitionType.topToBottom,
-                          ),
-                        },
-                      );
+                      context.pushNamed('AppointemenList');
                     },
                     text: 'creer rendez vous',
                     options: FFButtonOptions(

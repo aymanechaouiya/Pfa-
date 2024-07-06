@@ -204,11 +204,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'listerRendezvous',
-          path: '/listerRendezvous',
-          builder: (context, params) => const ListerRendezvousWidget(),
-        ),
-        FFRoute(
           name: 'notifications',
           path: '/notifications',
           builder: (context, params) => const NotificationsWidget(),
@@ -234,11 +229,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const UpdatePasswordAdminWidget(),
         ),
         FFRoute(
-          name: 'update_password_medecin',
-          path: '/updatePasswordMedecin',
-          builder: (context, params) => const UpdatePasswordMedecinWidget(),
-        ),
-        FFRoute(
           name: 'update_password_patient',
           path: '/updatePasswordPatient',
           builder: (context, params) => const UpdatePasswordPatientWidget(),
@@ -252,11 +242,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'profileMed',
           path: '/profileMed',
           builder: (context, params) => const ProfileMedWidget(),
-        ),
-        FFRoute(
-          name: 'editProfileMed',
-          path: '/editProfileMed',
-          builder: (context, params) => const EditProfileMedWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
