@@ -246,94 +246,116 @@ class _CreerRendueVouzWidgetState extends State<CreerRendueVouzWidget> {
                 ),
                 Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                  child: FutureBuilder<List<SlotsRow>>(
-                    future: SlotsTable().queryRows(
-                      queryFn: (q) => q.eq(
-                        'id_doctors',
-                        widget.getNameDoctors?.id,
-                      ),
-                    ),
-                    builder: (context, snapshot) {
-                      // Customize what your widget looks like when it's loading.
-                      if (!snapshot.hasData) {
-                        return Center(
-                          child: SizedBox(
-                            width: 50.0,
-                            height: 50.0,
-                            child: CircularProgressIndicator(
-                              valueColor: AlwaysStoppedAnimation<Color>(
+                  child: InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      final datePickedTime = await showTimePicker(
+                        context: context,
+                        initialTime: TimeOfDay.fromDateTime(
+                            (_model.datePicked ?? DateTime.now())),
+                        builder: (context, child) {
+                          return wrapInMaterialTimePickerTheme(
+                            context,
+                            child!,
+                            headerBackgroundColor:
                                 FlutterFlowTheme.of(context).primary,
+                            headerForegroundColor:
+                                FlutterFlowTheme.of(context).info,
+                            headerTextStyle: FlutterFlowTheme.of(context)
+                                .headlineLarge
+                                .override(
+                                  fontFamily: 'Outfit',
+                                  fontSize: 32.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                            pickerBackgroundColor: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            pickerForegroundColor:
+                                FlutterFlowTheme.of(context).primaryText,
+                            selectedDateTimeBackgroundColor:
+                                FlutterFlowTheme.of(context).primary,
+                            selectedDateTimeForegroundColor:
+                                FlutterFlowTheme.of(context).info,
+                            actionButtonForegroundColor:
+                                FlutterFlowTheme.of(context).primaryText,
+                            iconSize: 24.0,
+                          );
+                        },
+                      );
+                      if (datePickedTime != null) {
+                        safeSetState(() {
+                          _model.datePicked = DateTime(
+                            (_model.datePicked ?? DateTime.now()).year,
+                            (_model.datePicked ?? DateTime.now()).month,
+                            (_model.datePicked ?? DateTime.now()).day,
+                            datePickedTime.hour,
+                            datePickedTime.minute,
+                          );
+                        });
+                      }
+                    },
+                    child: Container(
+                      width: double.infinity,
+                      height: 67.0,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        boxShadow: const [
+                          BoxShadow(
+                            blurRadius: 4.0,
+                            color: Color(0x33000000),
+                            offset: Offset(
+                              0.0,
+                              2.0,
+                            ),
+                          )
+                        ],
+                      ),
+                      child: Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 2.0, 0.0, 0.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 10.0, 0.0, 0.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        10.0, 5.0, 0.0, 0.0),
+                                    child: Icon(
+                                      Icons.watch_later_rounded,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      size: 24.0,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        10.0, 0.0, 0.0, 0.0),
+                                    child: Text(
+                                      'Clicker pour Selectioner le temp',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
-                          ),
-                        );
-                      }
-                      List<SlotsRow> rowSlotsRowList = snapshot.data!;
-                      return Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children:
-                            List.generate(rowSlotsRowList.length, (rowIndex) {
-                          final rowSlotsRow = rowSlotsRowList[rowIndex];
-                          return InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              final datePickedTime = await showTimePicker(
-                                context: context,
-                                initialTime:
-                                    TimeOfDay.fromDateTime(getCurrentTimestamp),
-                                builder: (context, child) {
-                                  return wrapInMaterialTimePickerTheme(
-                                    context,
-                                    child!,
-                                    headerBackgroundColor:
-                                        FlutterFlowTheme.of(context).primary,
-                                    headerForegroundColor:
-                                        FlutterFlowTheme.of(context).info,
-                                    headerTextStyle:
-                                        FlutterFlowTheme.of(context)
-                                            .headlineLarge
-                                            .override(
-                                              fontFamily: 'Outfit',
-                                              fontSize: 32.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.w600,
-                                            ),
-                                    pickerBackgroundColor:
-                                        FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                    pickerForegroundColor:
-                                        FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                    selectedDateTimeBackgroundColor:
-                                        FlutterFlowTheme.of(context).primary,
-                                    selectedDateTimeForegroundColor:
-                                        FlutterFlowTheme.of(context).info,
-                                    actionButtonForegroundColor:
-                                        FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                    iconSize: 24.0,
-                                  );
-                                },
-                              );
-                              if (datePickedTime != null) {
-                                safeSetState(() {
-                                  _model.datePicked = DateTime(
-                                    getCurrentTimestamp.year,
-                                    getCurrentTimestamp.month,
-                                    getCurrentTimestamp.day,
-                                    datePickedTime.hour,
-                                    datePickedTime.minute,
-                                  );
-                                });
-                              }
-                            },
-                            child: Text(
+                            Text(
                               valueOrDefault<String>(
-                                rowSlotsRow.startTime?.time?.toString(),
-                                'klj',
+                                dateTimeFormat('Hm', _model.datePicked),
+                                'selecioner un temp',
                               ),
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
@@ -342,10 +364,10 @@ class _CreerRendueVouzWidgetState extends State<CreerRendueVouzWidget> {
                                     letterSpacing: 0.0,
                                   ),
                             ),
-                          );
-                        }).divide(const SizedBox(width: 10.0)),
-                      );
-                    },
+                          ],
+                        ),
+                      ),
+                    ),
                   ),
                 ),
                 Padding(
@@ -360,6 +382,10 @@ class _CreerRendueVouzWidgetState extends State<CreerRendueVouzWidget> {
                         'email_patient': currentUserEmail,
                         'nom medcines': widget.getNameDoctors?.fullName,
                         'id_med': widget.getNameDoctors?.id,
+                        'pic_med': valueOrDefault<String>(
+                          widget.getNameDoctors?.pic,
+                          'al',
+                        ),
                       });
                       await MedcinsTable().update(
                         data: {
