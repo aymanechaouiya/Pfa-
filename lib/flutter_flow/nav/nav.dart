@@ -196,7 +196,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'dossier_medical',
           path: '/dossierMedical',
-          builder: (context, params) => const DossierMedicalWidget(),
+          builder: (context, params) => DossierMedicalWidget(
+            getPat: params.getParam<MedcinsRow>(
+              'getPat',
+              ParamType.SupabaseRow,
+            ),
+          ),
         ),
         FFRoute(
           name: 'listerRendezvous',
@@ -244,9 +249,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const CrudWidget(),
         ),
         FFRoute(
-          name: 'List07UserSearch',
-          path: '/list07UserSearch',
-          builder: (context, params) => const List07UserSearchWidget(),
+          name: 'profileMed',
+          path: '/profileMed',
+          builder: (context, params) => const ProfileMedWidget(),
+        ),
+        FFRoute(
+          name: 'editProfileMed',
+          path: '/editProfileMed',
+          builder: (context, params) => const EditProfileMedWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

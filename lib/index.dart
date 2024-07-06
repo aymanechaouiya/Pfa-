@@ -23,7 +23,8 @@ export '/pages/authentication/the_start_page/the_start_page_widget.dart'
     show TheStartPageWidget;
 export '/pages/patient/profile_patient/profile_patient_widget.dart'
     show ProfilePatientWidget;
-export '/pages/list_medcines/list_medcines_widget.dart' show ListMedcinesWidget;
+export '/pages/admin/list_medcines/list_medcines_widget.dart'
+    show ListMedcinesWidget;
 export '/pages/admin/listes_patient/listes_patient_widget.dart'
     show ListesPatientWidget;
 export '/pages/medecin/edit_doctors/edit_doctors_widget.dart'
@@ -53,5 +54,7 @@ export '/pages/medecin/update_password_medecin/update_password_medecin_widget.da
 export '/pages/patient/update_password_patient/update_password_patient_widget.dart'
     show UpdatePasswordPatientWidget;
 export '/pages/testing/crud/crud_widget.dart' show CrudWidget;
-export '/pages/patient/list07_user_search/list07_user_search_widget.dart'
-    show List07UserSearchWidget;
+export '/pages/medecin/profile_med/profile_med_widget.dart'
+    show ProfileMedWidget;
+export '/pages/medecin/edit_profile_med/edit_profile_med_widget.dart'
+    show EditProfileMedWidget;

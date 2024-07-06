@@ -390,6 +390,7 @@ class _CreerRendueVouzWidgetState extends State<CreerRendueVouzWidget> {
                               PostgresTime(_model.datePicked1)),
                           'nom patient': _model.textController1.text,
                           'descreptions': _model.textController2.text,
+                          'patient_name': currentUserEmail,
                         },
                         matchingRows: (rows) => rows.eq(
                           'id',
@@ -426,7 +427,7 @@ class _CreerRendueVouzWidgetState extends State<CreerRendueVouzWidget> {
                           false;
 
                       context.pushNamed(
-                        'List07UserSearch',
+                        'AppointemenList',
                         extra: <String, dynamic>{
                           kTransitionInfoKey: const TransitionInfo(
                             hasTransition: true,
