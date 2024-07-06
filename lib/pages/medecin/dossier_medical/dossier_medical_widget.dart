@@ -83,10 +83,7 @@ class _DossierMedicalWidgetState extends State<DossierMedicalWidget> {
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 16.0, 0.0, 12.0),
                             child: Text(
-                              valueOrDefault<String>(
-                                widget.getPat?.nomPatient,
-                                ';,',
-                              ),
+                              'aymane chaouiya ',
                               textAlign: TextAlign.center,
                               style: FlutterFlowTheme.of(context)
                                   .headlineSmall

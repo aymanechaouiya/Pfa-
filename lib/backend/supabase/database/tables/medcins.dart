@@ -44,14 +44,8 @@ class MedcinsRow extends SupabaseDataRow {
   String? get descreption => getField<String>('descreption');
   set descreption(String? value) => setField<String>('descreption', value);
 
-  String? get userIs => getField<String>('user_is');
-  set userIs(String? value) => setField<String>('user_is', value);
-
   PostgresTime? get temp => getField<PostgresTime>('temp');
   set temp(PostgresTime? value) => setField<PostgresTime>('temp', value);
-
-  String? get nomPatient => getField<String>('nom patient');
-  set nomPatient(String? value) => setField<String>('nom patient', value);
 
   String? get descreptions => getField<String>('descreptions');
   set descreptions(String? value) => setField<String>('descreptions', value);
@@ -65,4 +59,10 @@ class MedcinsRow extends SupabaseDataRow {
   String? get pathologieAssocie => getField<String>('pathologie associé');
   set pathologieAssocie(String? value) =>
       setField<String>('pathologie associé', value);
+
+  String? get doctorUid => getField<String>('doctor_uid');
+  set doctorUid(String? value) => setField<String>('doctor_uid', value);
+
+  DateTime? get date => getField<DateTime>('date');
+  set date(DateTime? value) => setField<DateTime>('date', value);
 }

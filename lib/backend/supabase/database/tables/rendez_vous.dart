@@ -17,11 +17,11 @@ class RendezVousRow extends SupabaseDataRow {
   int get id => getField<int>('id')!;
   set id(int value) => setField<int>('id', value);
 
-  DateTime? get temp => getField<DateTime>('temp');
-  set temp(DateTime? value) => setField<DateTime>('temp', value);
+  DateTime? get dates => getField<DateTime>('dates');
+  set dates(DateTime? value) => setField<DateTime>('dates', value);
 
-  DateTime? get date => getField<DateTime>('date');
-  set date(DateTime? value) => setField<DateTime>('date', value);
+  PostgresTime? get temps => getField<PostgresTime>('temps');
+  set temps(PostgresTime? value) => setField<PostgresTime>('temps', value);
 
   String? get nomMedcines => getField<String>('nom medcines');
   set nomMedcines(String? value) => setField<String>('nom medcines', value);
@@ -29,6 +29,12 @@ class RendezVousRow extends SupabaseDataRow {
   String? get picMed => getField<String>('pic_med');
   set picMed(String? value) => setField<String>('pic_med', value);
 
+  int? get slotsId => getField<int>('slots_id');
+  set slotsId(int? value) => setField<int>('slots_id', value);
+
   String? get emailPatient => getField<String>('email_patient');
   set emailPatient(String? value) => setField<String>('email_patient', value);
+
+  int? get idMed => getField<int>('id_med');
+  set idMed(int? value) => setField<int>('id_med', value);
 }

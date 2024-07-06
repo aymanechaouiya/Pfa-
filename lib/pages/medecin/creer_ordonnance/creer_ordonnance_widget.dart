@@ -1,7 +1,10 @@
+import '/backend/supabase/supabase.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
 import 'creer_ordonnance_model.dart';
 export 'creer_ordonnance_model.dart';
@@ -232,13 +235,96 @@ class _CreerOrdonnanceWidgetState extends State<CreerOrdonnanceWidget> {
                     _model.myBioTextControllerValidator.asValidator(context),
               ),
             ),
+            FutureBuilder<List<MaladiesRow>>(
+              future: MaladiesTable().queryRows(
+                queryFn: (q) => q,
+              ),
+              builder: (context, snapshot) {
+                // Customize what your widget looks like when it's loading.
+                if (!snapshot.hasData) {
+                  return Center(
+                    child: SizedBox(
+                      width: 50.0,
+                      height: 50.0,
+                      child: CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation<Color>(
+                          FlutterFlowTheme.of(context).primary,
+                        ),
+                      ),
+                    ),
+                  );
+                }
+                List<MaladiesRow> dropDownMaladiesRowList = snapshot.data!;
+                return FlutterFlowDropDown<String>(
+                  controller: _model.dropDownValueController ??=
+                      FormFieldController<String>(null),
+                  options:
+                      dropDownMaladiesRowList.map((e) => e.prenom).toList(),
+                  onChanged: (val) =>
+                      setState(() => _model.dropDownValue = val),
+                  width: 300.0,
+                  height: 56.0,
+                  textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontFamily: 'Readex Pro',
+                        letterSpacing: 0.0,
+                      ),
+                  hintText: 'Patient ',
+                  icon: Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: FlutterFlowTheme.of(context).secondaryText,
+                    size: 24.0,
+                  ),
+                  fillColor: FlutterFlowTheme.of(context).secondaryBackground,
+                  elevation: 2.0,
+                  borderColor: FlutterFlowTheme.of(context).alternate,
+                  borderWidth: 2.0,
+                  borderRadius: 8.0,
+                  margin: const EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 4.0),
+                  hidesUnderline: true,
+                  isOverButton: true,
+                  isSearchable: false,
+                  isMultiSelect: false,
+                );
+              },
+            ),
             Align(
               alignment: const AlignmentDirectional(0.0, 0.05),
               child: Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                 child: FFButtonWidget(
-                  onPressed: () {
-                    print('Button pressed ...');
+                  onPressed: () async {
+                    await MaladiesTable().update(
+                      data: {
+                        'motif': _model.yourNameTextController.text,
+                        'sympto': _model.myBioTextController.text,
+                      },
+                      matchingRows: (rows) => rows.eq(
+                        'prenom',
+                        _model.dropDownValue,
+                      ),
+                    );
+                    var confirmDialogResponse = await showDialog<bool>(
+                          context: context,
+                          builder: (alertDialogContext) {
+                            return AlertDialog(
+                              title: const Text('ordonance creer'),
+                              content: const Text('ordonance creer'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.pop(alertDialogContext, false),
+                                  child: const Text('Cancel'),
+                                ),
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.pop(alertDialogContext, true),
+                                  child: const Text('Confirm'),
+                                ),
+                              ],
+                            );
+                          },
+                        ) ??
+                        false;
                   },
                   text: 'creer ',
                   options: FFButtonOptions(

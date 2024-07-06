@@ -1,3 +1,4 @@
+import '/flutter_flow/flutter_flow_calendar.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'creer_rendue_vouz_widget.dart' show CreerRendueVouzWidget;
 import 'package:flutter/material.dart';
@@ -14,11 +15,17 @@ class CreerRendueVouzModel extends FlutterFlowModel<CreerRendueVouzWidget> {
   FocusNode? textFieldFocusNode2;
   TextEditingController? textController2;
   String? Function(BuildContext, String?)? textController2Validator;
-  DateTime? datePicked1;
-  DateTime? datePicked2;
+  // State field(s) for Calendar widget.
+  DateTimeRange? calendarSelectedDay;
+  DateTime? datePicked;
 
   @override
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    calendarSelectedDay = DateTimeRange(
+      start: DateTime.now().startOfDay,
+      end: DateTime.now().endOfDay,
+    );
+  }
 
   @override
   void dispose() {

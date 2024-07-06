@@ -27,7 +27,7 @@ export '/pages/admin/list_medcines/list_medcines_widget.dart'
     show ListMedcinesWidget;
 export '/pages/admin/listes_patient/listes_patient_widget.dart'
     show ListesPatientWidget;
-export '/pages/medecin/edit_doctors/edit_doctors_widget.dart'
+export '/pages/admin/edit_doctors/edit_doctors_widget.dart'
     show EditDoctorsWidget;
 export '/pages/medecin/dashboard_medecin/dashboard_medecin_widget.dart'
     show DashboardMedecinWidget;
@@ -39,8 +39,6 @@ export '/pages/medecin/liste_ordonnances/liste_ordonnances_widget.dart'
     show ListeOrdonnancesWidget;
 export '/pages/medecin/dossier_medical/dossier_medical_widget.dart'
     show DossierMedicalWidget;
-export '/pages/medecin/lister_rendezvous/lister_rendezvous_widget.dart'
-    show ListerRendezvousWidget;
 export '/pages/medecin/notifications/notifications_widget.dart'
     show NotificationsWidget;
 export '/pages/patient/notification_patientt/notification_patientt_widget.dart'
@@ -49,12 +47,8 @@ export '/pages/patient/creer_rendue_vouz/creer_rendue_vouz_widget.dart'
     show CreerRendueVouzWidget;
 export '/pages/admin/update_password_admin/update_password_admin_widget.dart'
     show UpdatePasswordAdminWidget;
-export '/pages/medecin/update_password_medecin/update_password_medecin_widget.dart'
-    show UpdatePasswordMedecinWidget;
 export '/pages/patient/update_password_patient/update_password_patient_widget.dart'
     show UpdatePasswordPatientWidget;
 export '/pages/testing/crud/crud_widget.dart' show CrudWidget;
 export '/pages/medecin/profile_med/profile_med_widget.dart'
     show ProfileMedWidget;
-export '/pages/medecin/edit_profile_med/edit_profile_med_widget.dart'
-    show EditProfileMedWidget;
