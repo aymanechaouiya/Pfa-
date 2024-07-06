@@ -367,33 +367,23 @@ class _UpdatePasswordPatientWidgetState
                                       0.0, 0.0, 0.0, 16.0),
                                   child: FFButtonWidget(
                                     onPressed: () async {
-                                      GoRouter.of(context).prepareAuthEvent();
-                                      if (_model.passwordTextController.text !=
-                                          _model.passwordConfirmTextController
-                                              .text) {
+                                      if (_model.emailAddressTextController.text
+                                          .isEmpty) {
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
                                           const SnackBar(
                                             content: Text(
-                                              'Passwords don\'t match!',
+                                              'Email required!',
                                             ),
                                           ),
                                         );
                                         return;
                                       }
-
-                                      final user = await authManager
-                                          .createAccountWithEmail(
-                                        context,
-                                        _model.emailAddressTextController.text,
-                                        _model.passwordTextController.text,
+                                      await authManager.resetPassword(
+                                        email: _model
+                                            .emailAddressTextController.text,
+                                        context: context,
                                       );
-                                      if (user == null) {
-                                        return;
-                                      }
-
-                                      context.goNamedAuth(
-                                          'LoginPage', context.mounted);
                                     },
                                     text: 'modifier le mot de passe',
                                     options: FFButtonOptions(

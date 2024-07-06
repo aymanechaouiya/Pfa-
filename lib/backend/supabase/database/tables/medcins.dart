@@ -55,4 +55,14 @@ class MedcinsRow extends SupabaseDataRow {
 
   String? get descreptions => getField<String>('descreptions');
   set descreptions(String? value) => setField<String>('descreptions', value);
+
+  String? get patientName => getField<String>('patient_name');
+  set patientName(String? value) => setField<String>('patient_name', value);
+
+  String? get poid => getField<String>('poid');
+  set poid(String? value) => setField<String>('poid', value);
+
+  String? get pathologieAssocie => getField<String>('pathologie associé');
+  set pathologieAssocie(String? value) =>
+      setField<String>('pathologie associé', value);
 }
