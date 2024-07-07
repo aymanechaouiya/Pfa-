@@ -3,6 +3,7 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'appointemen_list_model.dart';
 export 'appointemen_list_model.dart';
@@ -143,12 +144,15 @@ class _AppointemenListWidgetState extends State<AppointemenListWidget>
                 child: Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 0.0),
                   child: FutureBuilder<List<RendezVousRow>>(
-                    future: RendezVousTable().queryRows(
-                      queryFn: (q) => q.eq(
-                        'email_patient',
-                        currentUserEmail,
-                      ),
-                    ),
+                    future: (_model.requestCompleter ??=
+                            Completer<List<RendezVousRow>>()
+                              ..complete(RendezVousTable().queryRows(
+                                queryFn: (q) => q.eq(
+                                  'email_patient',
+                                  currentUserEmail,
+                                ),
+                              )))
+                        .future,
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
                       if (!snapshot.hasData) {
@@ -293,6 +297,29 @@ class _AppointemenListWidgetState extends State<AppointemenListWidget>
                                                 currentUserEmail,
                                               ),
                                             );
+                                            setState(() =>
+                                                _model.requestCompleter = null);
+                                            await _model
+                                                .waitForRequestCompleted();
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title: const Text(
+                                                      'success deleted rendez vouz'),
+                                                  content: const Text('go back '),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: const Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                            context.safePop();
                                           },
                                           child: Icon(
                                             Icons.delete_sharp,

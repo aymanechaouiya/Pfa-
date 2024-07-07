@@ -298,37 +298,11 @@ class _ListePatientsWidgetState extends State<ListePatientsWidget>
                                       ),
                                       child: Padding(
                                         padding: const EdgeInsets.all(4.0),
-                                        child: InkWell(
-                                          splashColor: Colors.transparent,
-                                          focusColor: Colors.transparent,
-                                          hoverColor: Colors.transparent,
-                                          highlightColor: Colors.transparent,
-                                          onTap: () async {
-                                            context.pushNamed(
-                                              'dossier_medical',
-                                              queryParameters: {
-                                                'getPat': serializeParam(
-                                                  listViewMedcinsRow,
-                                                  ParamType.SupabaseRow,
-                                                ),
-                                              }.withoutNulls,
-                                              extra: <String, dynamic>{
-                                                kTransitionInfoKey:
-                                                    const TransitionInfo(
-                                                  hasTransition: true,
-                                                  transitionType:
-                                                      PageTransitionType
-                                                          .rightToLeft,
-                                                ),
-                                              },
-                                            );
-                                          },
-                                          child: Icon(
-                                            Icons.keyboard_arrow_right_rounded,
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                            size: 24.0,
-                                          ),
+                                        child: Icon(
+                                          Icons.keyboard_arrow_right_rounded,
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                          size: 24.0,
                                         ),
                                       ),
                                     ),

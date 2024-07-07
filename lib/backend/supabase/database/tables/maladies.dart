@@ -46,4 +46,7 @@ class MaladiesRow extends SupabaseDataRow {
 
   String? get doctor => getField<String>('doctor');
   set doctor(String? value) => setField<String>('doctor', value);
+
+  String? get pics => getField<String>('pics');
+  set pics(String? value) => setField<String>('pics', value);
 }

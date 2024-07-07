@@ -149,11 +149,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const TheStartPageWidget(),
         ),
         FFRoute(
-          name: 'ProfilePatient',
-          path: '/profilePatient',
-          builder: (context, params) => const ProfilePatientWidget(),
-        ),
-        FFRoute(
           name: 'listMedcines',
           path: '/listMedcines',
           builder: (context, params) => const ListMedcinesWidget(),
@@ -187,21 +182,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'creer_ordonnance',
           path: '/creerOrdonnance',
           builder: (context, params) => const CreerOrdonnanceWidget(),
-        ),
-        FFRoute(
-          name: 'listeOrdonnances',
-          path: '/listeOrdonnances',
-          builder: (context, params) => const ListeOrdonnancesWidget(),
-        ),
-        FFRoute(
-          name: 'dossier_medical',
-          path: '/dossierMedical',
-          builder: (context, params) => DossierMedicalWidget(
-            getPat: params.getParam<MedcinsRow>(
-              'getPat',
-              ParamType.SupabaseRow,
-            ),
-          ),
         ),
         FFRoute(
           name: 'notifications',
@@ -247,6 +227,31 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'createContact',
           path: '/createContact',
           builder: (context, params) => const CreateContactWidget(),
+        ),
+        FFRoute(
+          name: 'chatPage',
+          path: '/chatPage',
+          builder: (context, params) => ChatPageWidget(
+            getDoctorsInfos: params.getParam<MedcinsRow>(
+              'getDoctorsInfos',
+              ParamType.SupabaseRow,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'chatPageCopy',
+          path: '/chatPageCopy',
+          builder: (context, params) => const ChatPageCopyWidget(),
+        ),
+        FFRoute(
+          name: 'MedProfile',
+          path: '/medProfile',
+          builder: (context, params) => const MedProfileWidget(),
+        ),
+        FFRoute(
+          name: 'ProfilPatienr',
+          path: '/profilPatienr',
+          builder: (context, params) => const ProfilPatienrWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

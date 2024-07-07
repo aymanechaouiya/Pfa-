@@ -1,8 +1,10 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'dashboard_medecin_model.dart';
 export 'dashboard_medecin_model.dart';
 
@@ -13,15 +15,46 @@ class DashboardMedecinWidget extends StatefulWidget {
   State<DashboardMedecinWidget> createState() => _DashboardMedecinWidgetState();
 }
 
-class _DashboardMedecinWidgetState extends State<DashboardMedecinWidget> {
+class _DashboardMedecinWidgetState extends State<DashboardMedecinWidget>
+    with TickerProviderStateMixin {
   late DashboardMedecinModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => DashboardMedecinModel());
+
+    animationsMap.addAll({
+      'containerOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: const Offset(0.0, 100.0),
+            end: const Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+    });
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -81,63 +114,6 @@ class _DashboardMedecinWidgetState extends State<DashboardMedecinWidget> {
                   ],
                 ),
               ),
-              ListTile(
-                title: Text(
-                  'Title',
-                  style: FlutterFlowTheme.of(context).titleLarge.override(
-                        fontFamily: 'Outfit',
-                        letterSpacing: 0.0,
-                      ),
-                ),
-                trailing: Icon(
-                  Icons.arrow_forward_ios,
-                  color: FlutterFlowTheme.of(context).secondaryText,
-                  size: 20.0,
-                ),
-                tileColor: FlutterFlowTheme.of(context).secondaryBackground,
-                dense: false,
-              ),
-              ListTile(
-                title: Text(
-                  'liste des patients',
-                  style: FlutterFlowTheme.of(context).titleLarge.override(
-                        fontFamily: 'Outfit',
-                        letterSpacing: 0.0,
-                      ),
-                ),
-                trailing: Icon(
-                  Icons.arrow_forward_ios,
-                  color: FlutterFlowTheme.of(context).secondaryText,
-                  size: 20.0,
-                ),
-                tileColor: FlutterFlowTheme.of(context).secondaryBackground,
-                dense: false,
-              ),
-              InkWell(
-                splashColor: Colors.transparent,
-                focusColor: Colors.transparent,
-                hoverColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-                onTap: () async {
-                  context.pushNamed('creer_ordonnance');
-                },
-                child: ListTile(
-                  title: Text(
-                    'Creer un ordonance',
-                    style: FlutterFlowTheme.of(context).titleLarge.override(
-                          fontFamily: 'Outfit',
-                          letterSpacing: 0.0,
-                        ),
-                  ),
-                  trailing: Icon(
-                    Icons.arrow_forward_ios,
-                    color: FlutterFlowTheme.of(context).secondaryText,
-                    size: 20.0,
-                  ),
-                  tileColor: FlutterFlowTheme.of(context).secondaryBackground,
-                  dense: false,
-                ),
-              ),
             ],
           ),
         ),
@@ -170,10 +146,19 @@ class _DashboardMedecinWidgetState extends State<DashboardMedecinWidget> {
               ),
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(150.0, 0.0, 0.0, 0.0),
-                child: Icon(
-                  Icons.person,
-                  color: FlutterFlowTheme.of(context).secondaryText,
-                  size: 24.0,
+                child: InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    context.pushNamed('MedProfile');
+                  },
+                  child: Icon(
+                    Icons.person,
+                    color: FlutterFlowTheme.of(context).secondaryText,
+                    size: 24.0,
+                  ),
                 ),
               ),
             ].divide(const SizedBox(width: 10.0)),
@@ -201,7 +186,7 @@ class _DashboardMedecinWidgetState extends State<DashboardMedecinWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 55.0, 0.0, 0.0),
                 child: FutureBuilder<List<MedcinsRow>>(
                   future: MedcinsTable().queryRows(
                     queryFn: (q) => q.eq(
@@ -234,33 +219,140 @@ class _DashboardMedecinWidgetState extends State<DashboardMedecinWidget> {
                       itemBuilder: (context, listViewIndex) {
                         final listViewMedcinsRow =
                             listViewMedcinsRowList[listViewIndex];
-                        return ListTile(
-                          title: Text(
-                            listViewMedcinsRow.patientName!,
-                            style: FlutterFlowTheme.of(context)
-                                .titleLarge
-                                .override(
-                                  fontFamily: 'Outfit',
-                                  letterSpacing: 0.0,
-                                ),
-                          ),
-                          subtitle: Text(
-                            listViewMedcinsRow.temp!.time.toString(),
-                            style: FlutterFlowTheme.of(context)
-                                .labelMedium
-                                .override(
-                                  fontFamily: 'Readex Pro',
-                                  letterSpacing: 0.0,
-                                ),
-                          ),
-                          trailing: Icon(
-                            Icons.arrow_forward_ios,
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                            size: 20.0,
-                          ),
-                          tileColor:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          dense: false,
+                        return Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 1.0),
+                          child: Container(
+                            width: double.infinity,
+                            decoration: const BoxDecoration(
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                  blurRadius: 0.0,
+                                  color: Color(0xFFE0E3E7),
+                                  offset: Offset(
+                                    0.0,
+                                    1.0,
+                                  ),
+                                )
+                              ],
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Container(
+                                    width: 44.0,
+                                    height: 44.0,
+                                    decoration: BoxDecoration(
+                                      color: const Color(0x4C4B39EF),
+                                      shape: BoxShape.circle,
+                                      border: Border.all(
+                                        color: const Color(0xFF4B39EF),
+                                        width: 2.0,
+                                      ),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(2.0),
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(40.0),
+                                        child: Image.network(
+                                          listViewMedcinsRow.picsPatient!,
+                                          width: 60.0,
+                                          height: 60.0,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  12.0, 0.0, 0.0, 0.0),
+                                          child: Text(
+                                            listViewMedcinsRow.patientName!,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyLarge
+                                                .override(
+                                                  fontFamily:
+                                                      'Plus Jakarta Sans',
+                                                  color: const Color(0xFF14181B),
+                                                  fontSize: 16.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  12.0, 4.0, 0.0, 0.0),
+                                          child: Text(
+                                            dateTimeFormat('jm',
+                                                listViewMedcinsRow.temp!.time),
+                                            style: FlutterFlowTheme.of(context)
+                                                .labelMedium
+                                                .override(
+                                                  fontFamily:
+                                                      'Plus Jakarta Sans',
+                                                  color: const Color(0xFF57636C),
+                                                  fontSize: 14.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  12.0, 4.0, 0.0, 0.0),
+                                          child: Text(
+                                            dateTimeFormat('d/M',
+                                                listViewMedcinsRow.date!),
+                                            style: FlutterFlowTheme.of(context)
+                                                .labelMedium
+                                                .override(
+                                                  fontFamily:
+                                                      'Plus Jakarta Sans',
+                                                  color: const Color(0xFF57636C),
+                                                  fontSize: 14.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Card(
+                                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                                    color: const Color(0xFFF1F4F8),
+                                    elevation: 1.0,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(40.0),
+                                    ),
+                                    child: const Padding(
+                                      padding: EdgeInsets.all(4.0),
+                                      child: Icon(
+                                        Icons.keyboard_arrow_right_rounded,
+                                        color: Color(0xFF57636C),
+                                        size: 24.0,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ).animateOnPageLoad(
+                              animationsMap['containerOnPageLoadAnimation']!),
                         );
                       },
                     );

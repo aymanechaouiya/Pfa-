@@ -47,22 +47,20 @@ class MedcinsRow extends SupabaseDataRow {
   PostgresTime? get temp => getField<PostgresTime>('temp');
   set temp(PostgresTime? value) => setField<PostgresTime>('temp', value);
 
-  String? get descreptions => getField<String>('descreptions');
-  set descreptions(String? value) => setField<String>('descreptions', value);
+  String? get descreptionsRendezVouz =>
+      getField<String>('descreptions_rendezVouz');
+  set descreptionsRendezVouz(String? value) =>
+      setField<String>('descreptions_rendezVouz', value);
 
   String? get patientName => getField<String>('patient_name');
   set patientName(String? value) => setField<String>('patient_name', value);
-
-  String? get poid => getField<String>('poid');
-  set poid(String? value) => setField<String>('poid', value);
-
-  String? get pathologieAssocie => getField<String>('pathologie associé');
-  set pathologieAssocie(String? value) =>
-      setField<String>('pathologie associé', value);
 
   String? get doctorUid => getField<String>('doctor_uid');
   set doctorUid(String? value) => setField<String>('doctor_uid', value);
 
   DateTime? get date => getField<DateTime>('date');
   set date(DateTime? value) => setField<DateTime>('date', value);
+
+  String? get picsPatient => getField<String>('pics_patient');
+  set picsPatient(String? value) => setField<String>('pics_patient', value);
 }

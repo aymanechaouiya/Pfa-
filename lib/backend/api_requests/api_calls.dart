@@ -9,11 +9,14 @@ export 'api_manager.dart' show ApiCallResponse;
 const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 
 class GetRolesCall {
-  static Future<ApiCallResponse> call() async {
+  static Future<ApiCallResponse> call({
+    String? searchString = '',
+    String? userId = '',
+  }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'getRoles',
       apiUrl:
-          'https://dzpyohvzxhxlymcdzvzs.supabase.co/rest/v1/users_role?uuid=eq.{uuid}',
+          'https://dzpyohvzxhxlymcdzvzs.supabase.co/rest/v1/users?username=ilike.*$searchString&uid=not.eq.$userId\$select=*',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
