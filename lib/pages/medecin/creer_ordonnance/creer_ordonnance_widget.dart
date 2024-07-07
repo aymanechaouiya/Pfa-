@@ -26,8 +26,11 @@ class _CreerOrdonnanceWidgetState extends State<CreerOrdonnanceWidget> {
     super.initState();
     _model = createModel(context, () => CreerOrdonnanceModel());
 
-    _model.yourNameTextController ??= TextEditingController();
-    _model.yourNameFocusNode ??= FocusNode();
+    _model.yourNameTextController1 ??= TextEditingController();
+    _model.yourNameFocusNode1 ??= FocusNode();
+
+    _model.yourNameTextController2 ??= TextEditingController();
+    _model.yourNameFocusNode2 ??= FocusNode();
 
     _model.myBioTextController ??= TextEditingController();
     _model.myBioFocusNode ??= FocusNode();
@@ -120,8 +123,8 @@ class _CreerOrdonnanceWidgetState extends State<CreerOrdonnanceWidget> {
             Padding(
               padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 16.0),
               child: TextFormField(
-                controller: _model.yourNameTextController,
-                focusNode: _model.yourNameFocusNode,
+                controller: _model.yourNameTextController1,
+                focusNode: _model.yourNameFocusNode1,
                 textCapitalization: TextCapitalization.words,
                 obscureText: false,
                 decoration: InputDecoration(
@@ -171,8 +174,66 @@ class _CreerOrdonnanceWidgetState extends State<CreerOrdonnanceWidget> {
                       fontFamily: 'Readex Pro',
                       letterSpacing: 0.0,
                     ),
-                validator:
-                    _model.yourNameTextControllerValidator.asValidator(context),
+                validator: _model.yourNameTextController1Validator
+                    .asValidator(context),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 16.0),
+              child: TextFormField(
+                controller: _model.yourNameTextController2,
+                focusNode: _model.yourNameFocusNode2,
+                textCapitalization: TextCapitalization.words,
+                obscureText: false,
+                decoration: InputDecoration(
+                  labelText: 'Votre nom',
+                  labelStyle: FlutterFlowTheme.of(context).labelMedium.override(
+                        fontFamily: 'Readex Pro',
+                        letterSpacing: 0.0,
+                      ),
+                  hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
+                        fontFamily: 'Readex Pro',
+                        letterSpacing: 0.0,
+                      ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: FlutterFlowTheme.of(context).alternate,
+                      width: 2.0,
+                    ),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: FlutterFlowTheme.of(context).primary,
+                      width: 2.0,
+                    ),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: FlutterFlowTheme.of(context).error,
+                      width: 2.0,
+                    ),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  focusedErrorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: FlutterFlowTheme.of(context).error,
+                      width: 2.0,
+                    ),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  filled: true,
+                  fillColor: FlutterFlowTheme.of(context).secondaryBackground,
+                  contentPadding:
+                      const EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 0.0, 24.0),
+                ),
+                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      fontFamily: 'Readex Pro',
+                      letterSpacing: 0.0,
+                    ),
+                validator: _model.yourNameTextController2Validator
+                    .asValidator(context),
               ),
             ),
             Padding(
@@ -295,8 +356,9 @@ class _CreerOrdonnanceWidgetState extends State<CreerOrdonnanceWidget> {
                   onPressed: () async {
                     await MaladiesTable().update(
                       data: {
-                        'motif': _model.yourNameTextController.text,
+                        'motif': _model.yourNameTextController1.text,
                         'sympto': _model.myBioTextController.text,
+                        'doctor': _model.yourNameTextController2.text,
                       },
                       matchingRows: (rows) => rows.eq(
                         'prenom',

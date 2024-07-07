@@ -7,9 +7,13 @@ class CreerOrdonnanceModel extends FlutterFlowModel<CreerOrdonnanceWidget> {
   ///  State fields for stateful widgets in this page.
 
   // State field(s) for yourName widget.
-  FocusNode? yourNameFocusNode;
-  TextEditingController? yourNameTextController;
-  String? Function(BuildContext, String?)? yourNameTextControllerValidator;
+  FocusNode? yourNameFocusNode1;
+  TextEditingController? yourNameTextController1;
+  String? Function(BuildContext, String?)? yourNameTextController1Validator;
+  // State field(s) for yourName widget.
+  FocusNode? yourNameFocusNode2;
+  TextEditingController? yourNameTextController2;
+  String? Function(BuildContext, String?)? yourNameTextController2Validator;
   // State field(s) for myBio widget.
   FocusNode? myBioFocusNode;
   TextEditingController? myBioTextController;
@@ -23,8 +27,11 @@ class CreerOrdonnanceModel extends FlutterFlowModel<CreerOrdonnanceWidget> {
 
   @override
   void dispose() {
-    yourNameFocusNode?.dispose();
-    yourNameTextController?.dispose();
+    yourNameFocusNode1?.dispose();
+    yourNameTextController1?.dispose();
+
+    yourNameFocusNode2?.dispose();
+    yourNameTextController2?.dispose();
 
     myBioFocusNode?.dispose();
     myBioTextController?.dispose();

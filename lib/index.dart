@@ -50,5 +50,5 @@ export '/pages/admin/update_password_admin/update_password_admin_widget.dart'
 export '/pages/patient/update_password_patient/update_password_patient_widget.dart'
     show UpdatePasswordPatientWidget;
 export '/pages/testing/crud/crud_widget.dart' show CrudWidget;
-export '/pages/medecin/profile_med/profile_med_widget.dart'
-    show ProfileMedWidget;
+export '/pages/medecin/creer_dossier_medical/creer_dossier_medical_widget.dart'
+    show CreerDossierMedicalWidget;
