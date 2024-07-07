@@ -242,6 +242,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'creer_dossierMedical',
           path: '/creerDossierMedical',
           builder: (context, params) => const CreerDossierMedicalWidget(),
+        ),
+        FFRoute(
+          name: 'createContact',
+          path: '/createContact',
+          builder: (context, params) => const CreateContactWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

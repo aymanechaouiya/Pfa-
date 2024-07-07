@@ -8,55 +8,13 @@ export 'api_manager.dart' show ApiCallResponse;
 
 const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 
-class GetUserRoleCall {
+class GetRolesCall {
   static Future<ApiCallResponse> call() async {
     return ApiManager.instance.makeApiCall(
-      callName: 'getUserRole',
+      callName: 'getRoles',
       apiUrl:
-          'https://dzpyohvzxhxlymcdzvzs.supabase.co/rest/v1/user_roles?select=*',
+          'https://dzpyohvzxhxlymcdzvzs.supabase.co/rest/v1/users_role?uuid=eq.{uuid}',
       callType: ApiCallType.GET,
-      headers: {
-        'apikey':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR6cHlvaHZ6eGh4bHltY2R6dnpzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjAwMzM4MzksImV4cCI6MjAzNTYwOTgzOX0.Dkqxn10HYoxEdvFws-68VLkvtfA_XlEE6xnKDcbOh3Y',
-        'Authorization':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR6cHlvaHZ6eGh4bHltY2R6dnpzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjAwMzM4MzksImV4cCI6MjAzNTYwOTgzOX0.Dkqxn10HYoxEdvFws-68VLkvtfA_XlEE6xnKDcbOh3Y',
-        'Range': '0-9',
-      },
-      params: {},
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      isStreamingApi: false,
-      alwaysAllowBody: false,
-    );
-  }
-
-  static List<int>? rolName(dynamic response) => (getJsonField(
-        response,
-        r'''$[:].role''',
-        true,
-      ) as List?)
-          ?.withoutNulls
-          .map((x) => castToType<int>(x))
-          .withoutNulls
-          .toList();
-}
-
-class PhonePostCall {
-  static Future<ApiCallResponse> call({
-    String? phone = '',
-    String? password = '',
-  }) async {
-    final ffApiRequestBody = '''
-{
-  "phone": "$phone",
-  "password": "$password"
-}''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'phone post',
-      apiUrl: 'https://dzpyohvzxhxlymcdzvzs.supabase.co/auth/v1/signup',
-      callType: ApiCallType.POST,
       headers: {
         'apikey':
             'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR6cHlvaHZ6eGh4bHltY2R6dnpzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjAwMzM4MzksImV4cCI6MjAzNTYwOTgzOX0.Dkqxn10HYoxEdvFws-68VLkvtfA_XlEE6xnKDcbOh3Y',
@@ -64,8 +22,6 @@ class PhonePostCall {
             'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR6cHlvaHZ6eGh4bHltY2R6dnpzIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcyMDAzMzgzOSwiZXhwIjoyMDM1NjA5ODM5fQ.-7hmtL1crT75c-fnc7MhMTlegC40nc42R4V1pF-JJGY',
       },
       params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
@@ -74,6 +30,16 @@ class PhonePostCall {
       alwaysAllowBody: false,
     );
   }
+
+  static List<int>? getRole(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].roles_id''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
 }
 
 class ApiPagingParams {

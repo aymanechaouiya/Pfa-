@@ -52,3 +52,5 @@ export '/pages/patient/update_password_patient/update_password_patient_widget.da
 export '/pages/testing/crud/crud_widget.dart' show CrudWidget;
 export '/pages/medecin/creer_dossier_medical/creer_dossier_medical_widget.dart'
     show CreerDossierMedicalWidget;
+export '/pages/patient/create_contact/create_contact_widget.dart'
+    show CreateContactWidget;
