@@ -239,9 +239,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const CrudWidget(),
         ),
         FFRoute(
-          name: 'profileMed',
-          path: '/profileMed',
-          builder: (context, params) => const ProfileMedWidget(),
+          name: 'creer_dossierMedical',
+          path: '/creerDossierMedical',
+          builder: (context, params) => const CreerDossierMedicalWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

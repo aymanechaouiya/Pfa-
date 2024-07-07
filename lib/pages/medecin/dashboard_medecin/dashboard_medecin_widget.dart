@@ -60,7 +60,7 @@ class _DashboardMedecinWidgetState extends State<DashboardMedecinWidget> {
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                       child: Text(
-                        'Hello World',
+                        currentUserEmail.maybeHandleOverflow(maxChars: 5),
                         style: FlutterFlowTheme.of(context).titleLarge.override(
                               fontFamily: 'Outfit',
                               letterSpacing: 0.0,
@@ -71,7 +71,7 @@ class _DashboardMedecinWidgetState extends State<DashboardMedecinWidget> {
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                       child: Text(
-                        'Hello World',
+                        currentUserEmail,
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Readex Pro',
                               letterSpacing: 0.0,
@@ -113,6 +113,31 @@ class _DashboardMedecinWidgetState extends State<DashboardMedecinWidget> {
                 tileColor: FlutterFlowTheme.of(context).secondaryBackground,
                 dense: false,
               ),
+              InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () async {
+                  context.pushNamed('creer_ordonnance');
+                },
+                child: ListTile(
+                  title: Text(
+                    'Creer un ordonance',
+                    style: FlutterFlowTheme.of(context).titleLarge.override(
+                          fontFamily: 'Outfit',
+                          letterSpacing: 0.0,
+                        ),
+                  ),
+                  trailing: Icon(
+                    Icons.arrow_forward_ios,
+                    color: FlutterFlowTheme.of(context).secondaryText,
+                    size: 20.0,
+                  ),
+                  tileColor: FlutterFlowTheme.of(context).secondaryBackground,
+                  dense: false,
+                ),
+              ),
             ],
           ),
         ),
@@ -145,19 +170,10 @@ class _DashboardMedecinWidgetState extends State<DashboardMedecinWidget> {
               ),
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(150.0, 0.0, 0.0, 0.0),
-                child: InkWell(
-                  splashColor: Colors.transparent,
-                  focusColor: Colors.transparent,
-                  hoverColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  onTap: () async {
-                    context.pushNamed('profileMed');
-                  },
-                  child: Icon(
-                    Icons.person,
-                    color: FlutterFlowTheme.of(context).secondaryText,
-                    size: 24.0,
-                  ),
+                child: Icon(
+                  Icons.person,
+                  color: FlutterFlowTheme.of(context).secondaryText,
+                  size: 24.0,
                 ),
               ),
             ].divide(const SizedBox(width: 10.0)),

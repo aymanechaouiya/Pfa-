@@ -29,9 +29,6 @@ class RendezVousRow extends SupabaseDataRow {
   String? get picMed => getField<String>('pic_med');
   set picMed(String? value) => setField<String>('pic_med', value);
 
-  int? get slotsId => getField<int>('slots_id');
-  set slotsId(int? value) => setField<int>('slots_id', value);
-
   String? get emailPatient => getField<String>('email_patient');
   set emailPatient(String? value) => setField<String>('email_patient', value);
 
