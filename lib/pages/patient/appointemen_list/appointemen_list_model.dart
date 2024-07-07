@@ -1,5 +1,7 @@
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'appointemen_list_widget.dart' show AppointemenListWidget;
+import 'dart:async';
 import 'package:flutter/material.dart';
 
 class AppointemenListModel extends FlutterFlowModel<AppointemenListWidget> {
@@ -10,6 +12,7 @@ class AppointemenListModel extends FlutterFlowModel<AppointemenListWidget> {
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
+  Completer<List<RendezVousRow>>? requestCompleter;
 
   @override
   void initState(BuildContext context) {}
@@ -19,5 +22,21 @@ class AppointemenListModel extends FlutterFlowModel<AppointemenListWidget> {
     unfocusNode.dispose();
     textFieldFocusNode?.dispose();
     textController?.dispose();
+  }
+
+  /// Additional helper methods.
+  Future waitForRequestCompleted({
+    double minWait = 0,
+    double maxWait = double.infinity,
+  }) async {
+    final stopwatch = Stopwatch()..start();
+    while (true) {
+      await Future.delayed(const Duration(milliseconds: 50));
+      final timeElapsed = stopwatch.elapsedMilliseconds;
+      final requestComplete = requestCompleter?.isCompleted ?? false;
+      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
+        break;
+      }
+    }
   }
 }

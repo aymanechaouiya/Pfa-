@@ -163,7 +163,7 @@ class _ListOrdonanceWidgetState extends State<ListOrdonanceWidget> {
                                                     .fromSTEB(
                                                         0.0, 4.0, 0.0, 0.0),
                                                 child: Text(
-                                                  'tounsi said ',
+                                                  columnMaladiesRow.doctor!,
                                                   textAlign: TextAlign.start,
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -187,7 +187,7 @@ class _ListOrdonanceWidgetState extends State<ListOrdonanceWidget> {
                                                             .fromSTEB(0.0, 4.0,
                                                                 0.0, 0.0),
                                                     child: Text(
-                                                      '3 fois par jours',
+                                                      columnMaladiesRow.sympto!,
                                                       textAlign:
                                                           TextAlign.start,
                                                       style: FlutterFlowTheme

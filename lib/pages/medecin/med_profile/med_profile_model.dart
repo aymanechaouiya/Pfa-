@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'dossier_medical_widget.dart' show DossierMedicalWidget;
+import 'med_profile_widget.dart' show MedProfileWidget;
 import 'package:flutter/material.dart';
 
-class DossierMedicalModel extends FlutterFlowModel<DossierMedicalWidget> {
+class MedProfileModel extends FlutterFlowModel<MedProfileWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
