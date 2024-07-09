@@ -235,12 +235,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'groupName',
               ParamType.String,
             ),
+            chatId: params.getParam(
+              'chatId',
+              ParamType.int,
+            ),
+            chatMemb: params.getParam<String>(
+              'chatMemb',
+              ParamType.String,
+              isList: true,
+            ),
           ),
-        ),
-        FFRoute(
-          name: 'chatPageCopy',
-          path: '/chatPageCopy',
-          builder: (context, params) => const ChatPageCopyWidget(),
         ),
         FFRoute(
           name: 'MedProfile',
@@ -251,6 +255,34 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'ProfilPatienr',
           path: '/profilPatienr',
           builder: (context, params) => const ProfilPatienrWidget(),
+        ),
+        FFRoute(
+          name: 'chatPageDoc',
+          path: '/chatPageDoc',
+          builder: (context, params) => ChatPageDocWidget(
+            groupImg: params.getParam(
+              'groupImg',
+              ParamType.String,
+            ),
+            groupName: params.getParam(
+              'groupName',
+              ParamType.String,
+            ),
+            chatId: params.getParam(
+              'chatId',
+              ParamType.int,
+            ),
+            chatMemb: params.getParam<String>(
+              'chatMemb',
+              ParamType.String,
+              isList: true,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'createContactDoc',
+          path: '/createContactDoc',
+          builder: (context, params) => const CreateContactDocWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

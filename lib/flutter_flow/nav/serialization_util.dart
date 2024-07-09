@@ -213,8 +213,8 @@ dynamic deserializeParam<T>(
             return UsersRoleRow(data);
           case RendezVousRow:
             return RendezVousRow(data);
-          case MessageRow:
-            return MessageRow(data);
+          case MessagesRow:
+            return MessagesRow(data);
           case ChatMembersRow:
             return ChatMembersRow(data);
           case MaladiesRow:

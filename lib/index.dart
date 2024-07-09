@@ -31,7 +31,7 @@ export '/pages/medecin/dashboard_medecin/dashboard_medecin_widget.dart'
     show DashboardMedecinWidget;
 export '/pages/medecin/liste_patients/liste_patients_widget.dart'
     show ListePatientsWidget;
-export '/pages/medecin/creer_ordonnance/creer_ordonnance_widget.dart'
+export '/pages/creer_ordonnance/creer_ordonnance_widget.dart'
     show CreerOrdonnanceWidget;
 export '/pages/medecin/notifications/notifications_widget.dart'
     show NotificationsWidget;
@@ -48,9 +48,11 @@ export '/pages/admin/creer_dossier_medical/creer_dossier_medical_widget.dart'
 export '/pages/patient/create_contact/create_contact_widget.dart'
     show CreateContactWidget;
 export '/pages/patient/chat_page/chat_page_widget.dart' show ChatPageWidget;
-export '/pages/patient/chat_page_copy/chat_page_copy_widget.dart'
-    show ChatPageCopyWidget;
 export '/pages/medecin/med_profile/med_profile_widget.dart'
     show MedProfileWidget;
 export '/pages/patient/profil_patienr/profil_patienr_widget.dart'
     show ProfilPatienrWidget;
+export '/pages/medecin/chat_page_doc/chat_page_doc_widget.dart'
+    show ChatPageDocWidget;
+export '/pages/medecin/create_contact_doc/create_contact_doc_widget.dart'
+    show CreateContactDocWidget;

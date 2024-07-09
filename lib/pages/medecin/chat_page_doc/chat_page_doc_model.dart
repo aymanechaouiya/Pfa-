@@ -1,14 +1,14 @@
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'chat_page_widget.dart' show ChatPageWidget;
+import 'chat_page_doc_widget.dart' show ChatPageDocWidget;
 import 'dart:async';
 import 'package:flutter/material.dart';
 
-class ChatPageModel extends FlutterFlowModel<ChatPageWidget> {
+class ChatPageDocModel extends FlutterFlowModel<ChatPageDocWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Stores action output result for [Backend Call - Query Rows] action in chatPage widget.
+  // Stores action output result for [Backend Call - Query Rows] action in chatPageDoc widget.
   List<UsersRow>? members;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
