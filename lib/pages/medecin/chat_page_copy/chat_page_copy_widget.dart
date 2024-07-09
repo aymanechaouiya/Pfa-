@@ -5,36 +5,38 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'chat_page_doc_model.dart';
-export 'chat_page_doc_model.dart';
+import 'chat_page_copy_model.dart';
+export 'chat_page_copy_model.dart';
 
-class ChatPageDocWidget extends StatefulWidget {
-  const ChatPageDocWidget({
+class ChatPageCopyWidget extends StatefulWidget {
+  const ChatPageCopyWidget({
     super.key,
     String? groupImg,
     required this.groupName,
     required this.chatId,
     required this.chatMemb,
+    required this.getAllDetails,
   }) : groupImg = groupImg ?? 'null';
 
   final String groupImg;
   final String? groupName;
   final int? chatId;
   final List<String>? chatMemb;
+  final ChatMembersRow? getAllDetails;
 
   @override
-  State<ChatPageDocWidget> createState() => _ChatPageDocWidgetState();
+  State<ChatPageCopyWidget> createState() => _ChatPageCopyWidgetState();
 }
 
-class _ChatPageDocWidgetState extends State<ChatPageDocWidget> {
-  late ChatPageDocModel _model;
+class _ChatPageCopyWidgetState extends State<ChatPageCopyWidget> {
+  late ChatPageCopyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ChatPageDocModel());
+    _model = createModel(context, () => ChatPageCopyModel());
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
@@ -74,6 +76,20 @@ class _ChatPageDocWidgetState extends State<ChatPageDocWidget> {
           title: Row(
             mainAxisSize: MainAxisSize.max,
             children: [
+              InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () async {
+                  context.safePop();
+                },
+                child: Icon(
+                  Icons.chevron_left_sharp,
+                  color: FlutterFlowTheme.of(context).secondaryText,
+                  size: 24.0,
+                ),
+              ),
               Align(
                 alignment: const AlignmentDirectional(0.0, 0.0),
                 child: Padding(
@@ -86,7 +102,10 @@ class _ChatPageDocWidgetState extends State<ChatPageDocWidget> {
                       shape: BoxShape.circle,
                     ),
                     child: Image.network(
-                      widget.groupImg,
+                      valueOrDefault<String>(
+                        widget.getAllDetails?.senderImg,
+                        'null',
+                      ),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -95,7 +114,10 @@ class _ChatPageDocWidgetState extends State<ChatPageDocWidget> {
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 10.0),
                 child: Text(
-                  widget.groupName!,
+                  valueOrDefault<String>(
+                    widget.getAllDetails?.senderName,
+                    'No',
+                  ),
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
                         fontFamily: 'Outfit',
                         color: FlutterFlowTheme.of(context).primaryText,
@@ -104,7 +126,7 @@ class _ChatPageDocWidgetState extends State<ChatPageDocWidget> {
                       ),
                 ),
               ),
-            ],
+            ].divide(const SizedBox(width: 10.0)),
           ),
           actions: const [],
           centerTitle: false,

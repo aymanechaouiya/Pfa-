@@ -227,12 +227,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'chatPage',
           path: '/chatPage',
           builder: (context, params) => ChatPageWidget(
-            groupImg: params.getParam(
-              'groupImg',
+            personImg: params.getParam(
+              'personImg',
               ParamType.String,
             ),
-            groupName: params.getParam(
-              'groupName',
+            pName: params.getParam(
+              'pName',
               ParamType.String,
             ),
             chatId: params.getParam(
@@ -243,6 +243,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'chatMemb',
               ParamType.String,
               isList: true,
+            ),
+            getInfos: params.getParam<ChatMembersRow>(
+              'getInfos',
+              ParamType.SupabaseRow,
             ),
           ),
         ),
@@ -257,9 +261,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const ProfilPatienrWidget(),
         ),
         FFRoute(
-          name: 'chatPageDoc',
-          path: '/chatPageDoc',
-          builder: (context, params) => ChatPageDocWidget(
+          name: 'createContactCopy',
+          path: '/createContactCopy',
+          builder: (context, params) => const CreateContactCopyWidget(),
+        ),
+        FFRoute(
+          name: 'chatPageCopy',
+          path: '/chatPageCopy',
+          builder: (context, params) => ChatPageCopyWidget(
             groupImg: params.getParam(
               'groupImg',
               ParamType.String,
@@ -277,12 +286,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.String,
               isList: true,
             ),
+            getAllDetails: params.getParam<ChatMembersRow>(
+              'getAllDetails',
+              ParamType.SupabaseRow,
+            ),
           ),
-        ),
-        FFRoute(
-          name: 'createContactDoc',
-          path: '/createContactDoc',
-          builder: (context, params) => const CreateContactDocWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

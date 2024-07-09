@@ -1,25 +1,25 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
-import '/component/add_new_chat/add_new_chat_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'create_contact_doc_model.dart';
-export 'create_contact_doc_model.dart';
+import 'create_contact_copy_model.dart';
+export 'create_contact_copy_model.dart';
 
-class CreateContactDocWidget extends StatefulWidget {
-  const CreateContactDocWidget({super.key});
+class CreateContactCopyWidget extends StatefulWidget {
+  const CreateContactCopyWidget({super.key});
 
   @override
-  State<CreateContactDocWidget> createState() => _CreateContactDocWidgetState();
+  State<CreateContactCopyWidget> createState() =>
+      _CreateContactCopyWidgetState();
 }
 
-class _CreateContactDocWidgetState extends State<CreateContactDocWidget>
+class _CreateContactCopyWidgetState extends State<CreateContactCopyWidget>
     with TickerProviderStateMixin {
-  late CreateContactDocModel _model;
+  late CreateContactCopyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -28,7 +28,7 @@ class _CreateContactDocWidgetState extends State<CreateContactDocWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => CreateContactDocModel());
+    _model = createModel(context, () => CreateContactCopyModel());
 
     animationsMap.addAll({
       'containerOnPageLoadAnimation': AnimationInfo(
@@ -105,43 +105,6 @@ class _CreateContactDocWidgetState extends State<CreateContactDocWidget>
                       fontSize: 22.0,
                       letterSpacing: 0.0,
                     ),
-              ),
-              Align(
-                alignment: const AlignmentDirectional(1.0, 0.0),
-                child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(70.0, 0.0, 0.0, 0.0),
-                  child: InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      await showModalBottomSheet(
-                        isScrollControlled: true,
-                        backgroundColor: Colors.transparent,
-                        enableDrag: false,
-                        context: context,
-                        builder: (context) {
-                          return GestureDetector(
-                            onTap: () => _model.unfocusNode.canRequestFocus
-                                ? FocusScope.of(context)
-                                    .requestFocus(_model.unfocusNode)
-                                : FocusScope.of(context).unfocus(),
-                            child: Padding(
-                              padding: MediaQuery.viewInsetsOf(context),
-                              child: const AddNewChatWidget(),
-                            ),
-                          );
-                        },
-                      ).then((value) => safeSetState(() {}));
-                    },
-                    child: Icon(
-                      Icons.add_box,
-                      color: FlutterFlowTheme.of(context).primaryBackground,
-                      size: 24.0,
-                    ),
-                  ),
-                ),
               ),
             ],
           ),
@@ -225,7 +188,7 @@ class _CreateContactDocWidgetState extends State<CreateContactDocWidget>
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(40.0),
                                       child: Image.network(
-                                        listViewChatMembersRow.chatImg!,
+                                        listViewChatMembersRow.senderImg!,
                                         width: 60.0,
                                         height: 60.0,
                                         fit: BoxFit.cover,
@@ -243,7 +206,10 @@ class _CreateContactDocWidgetState extends State<CreateContactDocWidget>
                                         padding: const EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 0.0, 0.0),
                                         child: Text(
-                                          listViewChatMembersRow.chatName!,
+                                          valueOrDefault<String>(
+                                            listViewChatMembersRow.senderName,
+                                            'nothing',
+                                          ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyLarge
                                               .override(
@@ -252,44 +218,6 @@ class _CreateContactDocWidgetState extends State<CreateContactDocWidget>
                                                 fontSize: 16.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w500,
-                                              ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            12.0, 4.0, 0.0, 0.0),
-                                        child: Text(
-                                          valueOrDefault<String>(
-                                            listViewChatMembersRow.lastMessage,
-                                            'nothing',
-                                          ).maybeHandleOverflow(maxChars: 20),
-                                          style: FlutterFlowTheme.of(context)
-                                              .labelMedium
-                                              .override(
-                                                fontFamily: 'Plus Jakarta Sans',
-                                                color: const Color(0xFF57636C),
-                                                fontSize: 14.0,
-                                                letterSpacing: 0.0,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            20.0, 10.0, 0.0, 0.0),
-                                        child: Text(
-                                          valueOrDefault<String>(
-                                            dateTimeFormat(
-                                                'relative',
-                                                listViewChatMembersRow
-                                                    .lastMessageTime),
-                                            '00',
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Readex Pro',
-                                                letterSpacing: 0.0,
                                               ),
                                         ),
                                       ),
@@ -303,14 +231,14 @@ class _CreateContactDocWidgetState extends State<CreateContactDocWidget>
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
                                     context.pushNamed(
-                                      'chatPageDoc',
+                                      'chatPage',
                                       queryParameters: {
-                                        'groupImg': serializeParam(
-                                          listViewChatMembersRow.chatImg,
+                                        'personImg': serializeParam(
+                                          listViewChatMembersRow.recieverImg,
                                           ParamType.String,
                                         ),
-                                        'groupName': serializeParam(
-                                          listViewChatMembersRow.chatName,
+                                        'pName': serializeParam(
+                                          listViewChatMembersRow.recieverName,
                                           ParamType.String,
                                         ),
                                         'chatId': serializeParam(
@@ -321,6 +249,10 @@ class _CreateContactDocWidgetState extends State<CreateContactDocWidget>
                                           listViewChatMembersRow.chatMembers,
                                           ParamType.String,
                                           isList: true,
+                                        ),
+                                        'getInfos': serializeParam(
+                                          listViewChatMembersRow,
+                                          ParamType.SupabaseRow,
                                         ),
                                       }.withoutNulls,
                                     );
@@ -343,11 +275,11 @@ class _CreateContactDocWidgetState extends State<CreateContactDocWidget>
                                           context.pushNamed(
                                             'chatPage',
                                             queryParameters: {
-                                              'groupImg': serializeParam(
+                                              'personImg': serializeParam(
                                                 '',
                                                 ParamType.String,
                                               ),
-                                              'groupName': serializeParam(
+                                              'pName': serializeParam(
                                                 '',
                                                 ParamType.String,
                                               ),
@@ -360,6 +292,10 @@ class _CreateContactDocWidgetState extends State<CreateContactDocWidget>
                                                     .chatMembers,
                                                 ParamType.String,
                                                 isList: true,
+                                              ),
+                                              'getInfos': serializeParam(
+                                                listViewChatMembersRow,
+                                                ParamType.SupabaseRow,
                                               ),
                                             }.withoutNulls,
                                           );
