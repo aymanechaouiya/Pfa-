@@ -363,16 +363,8 @@ class _DescriptionMedecinsWidgetState extends State<DescriptionMedecinsWidget> {
                                       FlutterFlowTheme.of(context).primaryText,
                                   size: 24.0,
                                 ),
-                                onPressed: () async {
-                                  context.pushNamed(
-                                    'chatPage',
-                                    queryParameters: {
-                                      'getDoctorsInfos': serializeParam(
-                                        widget.getNames,
-                                        ParamType.SupabaseRow,
-                                      ),
-                                    }.withoutNulls,
-                                  );
+                                onPressed: () {
+                                  print('IconButton pressed ...');
                                 },
                               ),
                             ),
