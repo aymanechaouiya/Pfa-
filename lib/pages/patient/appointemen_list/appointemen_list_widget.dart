@@ -252,12 +252,27 @@ class _AppointemenListWidgetState extends State<AppointemenListWidget>
                                                       .fromSTEB(
                                                           12.0, 0.0, 0.0, 0.0),
                                                   child: Text(
-                                                    valueOrDefault<String>(
-                                                      listViewRendezVousRow
-                                                          .dates
-                                                          ?.toString(),
-                                                      'al',
-                                                    ),
+                                                    dateTimeFormat(
+                                                        'd/M/y',
+                                                        listViewRendezVousRow
+                                                            .dates!),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          12.0, 0.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    listViewRendezVousRow
+                                                        .temps!,
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .labelMedium

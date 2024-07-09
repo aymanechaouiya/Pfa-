@@ -17,16 +17,15 @@ class SlotsRow extends SupabaseDataRow {
   int get id => getField<int>('id')!;
   set id(int value) => setField<int>('id', value);
 
-  PostgresTime? get startTime => getField<PostgresTime>('start_time');
-  set startTime(PostgresTime? value) =>
-      setField<PostgresTime>('start_time', value);
+  DateTime get createdAt => getField<DateTime>('created_at')!;
+  set createdAt(DateTime value) => setField<DateTime>('created_at', value);
 
-  PostgresTime? get endTime => getField<PostgresTime>('end_time');
-  set endTime(PostgresTime? value) => setField<PostgresTime>('end_time', value);
+  String? get startTime => getField<String>('startTime');
+  set startTime(String? value) => setField<String>('startTime', value);
 
-  int? get idDoctors => getField<int>('id_doctors');
-  set idDoctors(int? value) => setField<int>('id_doctors', value);
+  bool? get isBooked => getField<bool>('isBooked');
+  set isBooked(bool? value) => setField<bool>('isBooked', value);
 
-  bool? get isBooked => getField<bool>('is_booked');
-  set isBooked(bool? value) => setField<bool>('is_booked', value);
+  int? get idDoctor => getField<int>('id_doctor');
+  set idDoctor(int? value) => setField<int>('id_doctor', value);
 }

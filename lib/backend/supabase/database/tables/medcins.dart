@@ -35,17 +35,14 @@ class MedcinsRow extends SupabaseDataRow {
   int? get tel => getField<int>('tel');
   set tel(int? value) => setField<int>('tel', value);
 
-  String? get availiblity => getField<String>('availiblity');
-  set availiblity(String? value) => setField<String>('availiblity', value);
-
   String? get pic => getField<String>('pic');
   set pic(String? value) => setField<String>('pic', value);
 
   String? get descreption => getField<String>('descreption');
   set descreption(String? value) => setField<String>('descreption', value);
 
-  PostgresTime? get temp => getField<PostgresTime>('temp');
-  set temp(PostgresTime? value) => setField<PostgresTime>('temp', value);
+  String? get temp => getField<String>('temp');
+  set temp(String? value) => setField<String>('temp', value);
 
   String? get descreptionsRendezVouz =>
       getField<String>('descreptions_rendezVouz');

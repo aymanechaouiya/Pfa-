@@ -298,10 +298,7 @@ class _DescriptionMedecinsWidgetState extends State<DescriptionMedecinsWidget> {
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 30.0, 0.0),
                               child: Text(
-                                valueOrDefault<String>(
-                                  widget.getNames?.availiblity,
-                                  'ml',
-                                ),
+                                'Localisation',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
@@ -421,10 +418,7 @@ class _DescriptionMedecinsWidgetState extends State<DescriptionMedecinsWidget> {
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               5.0, 5.0, 0.0, 0.0),
                           child: Text(
-                            valueOrDefault<String>(
-                              widget.getNames?.descreption,
-                              '21',
-                            ),
+                            'Dr. Jane Smith is a board-certified internal medicine physician with over 15 years of experience. ',
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(

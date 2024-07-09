@@ -296,8 +296,7 @@ class _DashboardMedecinWidgetState extends State<DashboardMedecinWidget>
                                               const EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 4.0, 0.0, 0.0),
                                           child: Text(
-                                            dateTimeFormat('jm',
-                                                listViewMedcinsRow.temp!.time),
+                                            listViewMedcinsRow.temp!,
                                             style: FlutterFlowTheme.of(context)
                                                 .labelMedium
                                                 .override(
