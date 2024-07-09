@@ -207,8 +207,6 @@ dynamic deserializeParam<T>(
         switch (T) {
           case SlotsRow:
             return SlotsRow(data);
-          case ChatRow:
-            return ChatRow(data);
           case MedcinsRow:
             return MedcinsRow(data);
           case UsersRoleRow:
@@ -217,6 +215,8 @@ dynamic deserializeParam<T>(
             return RendezVousRow(data);
           case MessageRow:
             return MessageRow(data);
+          case ChatMembersRow:
+            return ChatMembersRow(data);
           case MaladiesRow:
             return MaladiesRow(data);
           case UsersRow:

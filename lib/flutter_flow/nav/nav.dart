@@ -227,9 +227,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'chatPage',
           path: '/chatPage',
           builder: (context, params) => ChatPageWidget(
-            getDoctorsInfos: params.getParam<MedcinsRow>(
-              'getDoctorsInfos',
-              ParamType.SupabaseRow,
+            groupImg: params.getParam(
+              'groupImg',
+              ParamType.String,
+            ),
+            groupName: params.getParam(
+              'groupName',
+              ParamType.String,
             ),
           ),
         ),

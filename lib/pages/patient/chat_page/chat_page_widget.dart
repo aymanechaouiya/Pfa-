@@ -1,4 +1,3 @@
-import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -8,10 +7,12 @@ export 'chat_page_model.dart';
 class ChatPageWidget extends StatefulWidget {
   const ChatPageWidget({
     super.key,
-    required this.getDoctorsInfos,
-  });
+    String? groupImg,
+    required this.groupName,
+  }) : groupImg = groupImg ?? 'null';
 
-  final MedcinsRow? getDoctorsInfos;
+  final String groupImg;
+  final String? groupName;
 
   @override
   State<ChatPageWidget> createState() => _ChatPageWidgetState();
@@ -67,7 +68,7 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                       shape: BoxShape.circle,
                     ),
                     child: Image.network(
-                      widget.getDoctorsInfos!.pic!,
+                      widget.groupImg,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -76,10 +77,7 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 10.0),
                 child: Text(
-                  valueOrDefault<String>(
-                    widget.getDoctorsInfos?.fullName,
-                    'empty',
-                  ),
+                  widget.groupName!,
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
                         fontFamily: 'Outfit',
                         color: FlutterFlowTheme.of(context).primaryText,
