@@ -120,7 +120,7 @@ class _DashboardMedecinWidgetState extends State<DashboardMedecinWidget>
                 hoverColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 onTap: () async {
-                  context.pushNamed('createContactDoc');
+                  context.pushNamed('createContactCopy');
                 },
                 child: ListTile(
                   title: Text(

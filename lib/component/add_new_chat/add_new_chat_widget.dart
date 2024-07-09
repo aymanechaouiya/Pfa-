@@ -305,22 +305,24 @@ class _AddNewChatWidgetState extends State<AddNewChatWidget> {
                       await ChatMembersTable().insert({
                         'created_at':
                             supaSerialize<DateTime>(getCurrentTimestamp),
-                        'chat_members': (String uiid, String chatMember) {
-                          return [uiid] + [chatMember];
+                        'chat_members': (String uuid, String chatMember) {
+                          return [uuid] + [chatMember];
                         }(
                             currentUserUid,
                             getJsonField(
                               _model.selectUserData,
                               r'''$.uuid''',
                             ).toString()),
-                        'chat_name': valueOrDefault<String>(
-                          _model.selectUserData?.toString(),
-                          '\$.username',
-                        ),
-                        'chat_img': valueOrDefault<String>(
-                          _model.selectUserData?.toString(),
-                          '\$.pics',
-                        ),
+                        'sender_img': containerUsersRow?.pics,
+                        'reciever_img': getJsonField(
+                          _model.selectUserData,
+                          r'''$.pics''',
+                        ).toString(),
+                        'reciever_name': getJsonField(
+                          _model.selectUserData,
+                          r'''$.username''',
+                        ).toString(),
+                        'sender_name': containerUsersRow?.username,
                       });
 
                       context.pushNamed('PatientMainPage');

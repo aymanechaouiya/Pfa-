@@ -10,11 +10,11 @@ class ChatPageModel extends FlutterFlowModel<ChatPageWidget> {
   final unfocusNode = FocusNode();
   // Stores action output result for [Backend Call - Query Rows] action in chatPage widget.
   List<UsersRow>? members;
+  Completer<List<MessagesRow>>? requestCompleter;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
-  Completer<List<MessagesRow>>? requestCompleter;
 
   @override
   void initState(BuildContext context) {}

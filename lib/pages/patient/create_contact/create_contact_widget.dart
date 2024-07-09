@@ -225,7 +225,7 @@ class _CreateContactWidgetState extends State<CreateContactWidget>
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(40.0),
                                       child: Image.network(
-                                        listViewChatMembersRow.chatImg!,
+                                        listViewChatMembersRow.recieverImg!,
                                         width: 60.0,
                                         height: 60.0,
                                         fit: BoxFit.cover,
@@ -244,7 +244,7 @@ class _CreateContactWidgetState extends State<CreateContactWidget>
                                             12.0, 0.0, 0.0, 0.0),
                                         child: Text(
                                           valueOrDefault<String>(
-                                            listViewChatMembersRow.chatName,
+                                            listViewChatMembersRow.recieverName,
                                             'nothing',
                                           ),
                                           style: FlutterFlowTheme.of(context)
@@ -255,44 +255,6 @@ class _CreateContactWidgetState extends State<CreateContactWidget>
                                                 fontSize: 16.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w500,
-                                              ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            12.0, 4.0, 0.0, 0.0),
-                                        child: Text(
-                                          valueOrDefault<String>(
-                                            listViewChatMembersRow.lastMessage,
-                                            'nothing',
-                                          ).maybeHandleOverflow(maxChars: 20),
-                                          style: FlutterFlowTheme.of(context)
-                                              .labelMedium
-                                              .override(
-                                                fontFamily: 'Plus Jakarta Sans',
-                                                color: const Color(0xFF57636C),
-                                                fontSize: 14.0,
-                                                letterSpacing: 0.0,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            20.0, 10.0, 0.0, 0.0),
-                                        child: Text(
-                                          valueOrDefault<String>(
-                                            dateTimeFormat(
-                                                'relative',
-                                                listViewChatMembersRow
-                                                    .lastMessageTime),
-                                            '00',
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Readex Pro',
-                                                letterSpacing: 0.0,
                                               ),
                                         ),
                                       ),
@@ -308,22 +270,26 @@ class _CreateContactWidgetState extends State<CreateContactWidget>
                                     context.pushNamed(
                                       'chatPage',
                                       queryParameters: {
-                                        'groupName': serializeParam(
-                                          listViewChatMembersRow.chatName,
+                                        'personImg': serializeParam(
+                                          listViewChatMembersRow.recieverImg,
                                           ParamType.String,
+                                        ),
+                                        'pName': serializeParam(
+                                          listViewChatMembersRow.recieverName,
+                                          ParamType.String,
+                                        ),
+                                        'chatId': serializeParam(
+                                          listViewChatMembersRow.id,
+                                          ParamType.int,
                                         ),
                                         'chatMemb': serializeParam(
                                           listViewChatMembersRow.chatMembers,
                                           ParamType.String,
                                           isList: true,
                                         ),
-                                        'groupImg': serializeParam(
-                                          listViewChatMembersRow.chatImg,
-                                          ParamType.String,
-                                        ),
-                                        'chatId': serializeParam(
-                                          listViewChatMembersRow.id,
-                                          ParamType.int,
+                                        'getInfos': serializeParam(
+                                          listViewChatMembersRow,
+                                          ParamType.SupabaseRow,
                                         ),
                                       }.withoutNulls,
                                     );
@@ -346,12 +312,14 @@ class _CreateContactWidgetState extends State<CreateContactWidget>
                                           context.pushNamed(
                                             'chatPage',
                                             queryParameters: {
-                                              'groupImg': serializeParam(
-                                                '',
+                                              'personImg': serializeParam(
+                                                listViewChatMembersRow
+                                                    .recieverImg,
                                                 ParamType.String,
                                               ),
-                                              'groupName': serializeParam(
-                                                '',
+                                              'pName': serializeParam(
+                                                listViewChatMembersRow
+                                                    .recieverName,
                                                 ParamType.String,
                                               ),
                                               'chatId': serializeParam(
@@ -363,6 +331,10 @@ class _CreateContactWidgetState extends State<CreateContactWidget>
                                                     .chatMembers,
                                                 ParamType.String,
                                                 isList: true,
+                                              ),
+                                              'getInfos': serializeParam(
+                                                listViewChatMembersRow,
+                                                ParamType.SupabaseRow,
                                               ),
                                             }.withoutNulls,
                                           );

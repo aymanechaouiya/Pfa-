@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'create_contact_doc_widget.dart' show CreateContactDocWidget;
+import 'create_contact_copy_widget.dart' show CreateContactCopyWidget;
 import 'package:flutter/material.dart';
 
-class CreateContactDocModel extends FlutterFlowModel<CreateContactDocWidget> {
+class CreateContactCopyModel extends FlutterFlowModel<CreateContactCopyWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

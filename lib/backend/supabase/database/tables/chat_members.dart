@@ -39,4 +39,16 @@ class ChatMembersRow extends SupabaseDataRow {
 
   String? get chatImg => getField<String>('chat_img');
   set chatImg(String? value) => setField<String>('chat_img', value);
+
+  String? get senderImg => getField<String>('sender_img');
+  set senderImg(String? value) => setField<String>('sender_img', value);
+
+  String? get recieverImg => getField<String>('reciever_img');
+  set recieverImg(String? value) => setField<String>('reciever_img', value);
+
+  String? get senderName => getField<String>('sender_name');
+  set senderName(String? value) => setField<String>('sender_name', value);
+
+  String? get recieverName => getField<String>('reciever_name');
+  set recieverName(String? value) => setField<String>('reciever_name', value);
 }

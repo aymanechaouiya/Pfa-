@@ -52,7 +52,7 @@ export '/pages/medecin/med_profile/med_profile_widget.dart'
     show MedProfileWidget;
 export '/pages/patient/profil_patienr/profil_patienr_widget.dart'
     show ProfilPatienrWidget;
-export '/pages/medecin/chat_page_doc/chat_page_doc_widget.dart'
-    show ChatPageDocWidget;
-export '/pages/medecin/create_contact_doc/create_contact_doc_widget.dart'
-    show CreateContactDocWidget;
+export '/pages/medecin/create_contact_copy/create_contact_copy_widget.dart'
+    show CreateContactCopyWidget;
+export '/pages/medecin/chat_page_copy/chat_page_copy_widget.dart'
+    show ChatPageCopyWidget;

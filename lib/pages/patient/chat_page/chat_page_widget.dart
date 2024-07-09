@@ -11,16 +11,18 @@ export 'chat_page_model.dart';
 class ChatPageWidget extends StatefulWidget {
   const ChatPageWidget({
     super.key,
-    String? groupImg,
-    required this.groupName,
+    String? personImg,
+    required this.pName,
     required this.chatId,
     required this.chatMemb,
-  }) : groupImg = groupImg ?? 'null';
+    required this.getInfos,
+  }) : personImg = personImg ?? 'null';
 
-  final String groupImg;
-  final String? groupName;
+  final String personImg;
+  final String? pName;
   final int? chatId;
   final List<String>? chatMemb;
+  final ChatMembersRow? getInfos;
 
   @override
   State<ChatPageWidget> createState() => _ChatPageWidgetState();
@@ -44,6 +46,8 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
           widget.chatMemb!,
         ),
       );
+      setState(() => _model.requestCompleter = null);
+      await _model.waitForRequestCompleted();
     });
 
     _model.textController ??= TextEditingController();
@@ -74,6 +78,20 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
           title: Row(
             mainAxisSize: MainAxisSize.max,
             children: [
+              InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () async {
+                  context.safePop();
+                },
+                child: Icon(
+                  Icons.chevron_left_sharp,
+                  color: FlutterFlowTheme.of(context).secondaryText,
+                  size: 24.0,
+                ),
+              ),
               Align(
                 alignment: const AlignmentDirectional(0.0, 0.0),
                 child: Padding(
@@ -86,7 +104,7 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                       shape: BoxShape.circle,
                     ),
                     child: Image.network(
-                      widget.groupImg,
+                      widget.getInfos!.recieverImg!,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -95,7 +113,7 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 10.0),
                 child: Text(
-                  widget.groupName!,
+                  widget.getInfos!.recieverName!,
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
                         fontFamily: 'Outfit',
                         color: FlutterFlowTheme.of(context).primaryText,
@@ -104,7 +122,7 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                       ),
                 ),
               ),
-            ],
+            ].divide(const SizedBox(width: 10.0)),
           ),
           actions: const [],
           centerTitle: false,
