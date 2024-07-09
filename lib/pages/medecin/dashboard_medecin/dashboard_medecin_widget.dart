@@ -114,6 +114,38 @@ class _DashboardMedecinWidgetState extends State<DashboardMedecinWidget>
                   ],
                 ),
               ),
+              InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () async {
+                  context.pushNamed('createContactDoc');
+                },
+                child: ListTile(
+                  title: Text(
+                    'Title',
+                    style: FlutterFlowTheme.of(context).titleLarge.override(
+                          fontFamily: 'Outfit',
+                          letterSpacing: 0.0,
+                        ),
+                  ),
+                  subtitle: Text(
+                    'Subtitle goes here...',
+                    style: FlutterFlowTheme.of(context).labelMedium.override(
+                          fontFamily: 'Readex Pro',
+                          letterSpacing: 0.0,
+                        ),
+                  ),
+                  trailing: Icon(
+                    Icons.arrow_forward_ios,
+                    color: FlutterFlowTheme.of(context).secondaryText,
+                    size: 20.0,
+                  ),
+                  tileColor: FlutterFlowTheme.of(context).secondaryBackground,
+                  dense: false,
+                ),
+              ),
             ],
           ),
         ),

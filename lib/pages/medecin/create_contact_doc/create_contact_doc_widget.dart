@@ -7,19 +7,19 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'create_contact_model.dart';
-export 'create_contact_model.dart';
+import 'create_contact_doc_model.dart';
+export 'create_contact_doc_model.dart';
 
-class CreateContactWidget extends StatefulWidget {
-  const CreateContactWidget({super.key});
+class CreateContactDocWidget extends StatefulWidget {
+  const CreateContactDocWidget({super.key});
 
   @override
-  State<CreateContactWidget> createState() => _CreateContactWidgetState();
+  State<CreateContactDocWidget> createState() => _CreateContactDocWidgetState();
 }
 
-class _CreateContactWidgetState extends State<CreateContactWidget>
+class _CreateContactDocWidgetState extends State<CreateContactDocWidget>
     with TickerProviderStateMixin {
-  late CreateContactModel _model;
+  late CreateContactDocModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -28,7 +28,7 @@ class _CreateContactWidgetState extends State<CreateContactWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => CreateContactModel());
+    _model = createModel(context, () => CreateContactDocModel());
 
     animationsMap.addAll({
       'containerOnPageLoadAnimation': AnimationInfo(
@@ -243,10 +243,7 @@ class _CreateContactWidgetState extends State<CreateContactWidget>
                                         padding: const EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 0.0, 0.0),
                                         child: Text(
-                                          valueOrDefault<String>(
-                                            listViewChatMembersRow.chatName,
-                                            'nothing',
-                                          ),
+                                          listViewChatMembersRow.chatName!,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyLarge
                                               .override(
@@ -306,24 +303,24 @@ class _CreateContactWidgetState extends State<CreateContactWidget>
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
                                     context.pushNamed(
-                                      'chatPage',
+                                      'chatPageDoc',
                                       queryParameters: {
-                                        'groupName': serializeParam(
-                                          listViewChatMembersRow.chatName,
-                                          ParamType.String,
-                                        ),
-                                        'chatMemb': serializeParam(
-                                          listViewChatMembersRow.chatMembers,
-                                          ParamType.String,
-                                          isList: true,
-                                        ),
                                         'groupImg': serializeParam(
                                           listViewChatMembersRow.chatImg,
+                                          ParamType.String,
+                                        ),
+                                        'groupName': serializeParam(
+                                          listViewChatMembersRow.chatName,
                                           ParamType.String,
                                         ),
                                         'chatId': serializeParam(
                                           listViewChatMembersRow.id,
                                           ParamType.int,
+                                        ),
+                                        'chatMemb': serializeParam(
+                                          listViewChatMembersRow.chatMembers,
+                                          ParamType.String,
+                                          isList: true,
                                         ),
                                       }.withoutNulls,
                                     );

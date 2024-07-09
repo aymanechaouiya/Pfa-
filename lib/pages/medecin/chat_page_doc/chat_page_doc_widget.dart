@@ -5,11 +5,11 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'chat_page_model.dart';
-export 'chat_page_model.dart';
+import 'chat_page_doc_model.dart';
+export 'chat_page_doc_model.dart';
 
-class ChatPageWidget extends StatefulWidget {
-  const ChatPageWidget({
+class ChatPageDocWidget extends StatefulWidget {
+  const ChatPageDocWidget({
     super.key,
     String? groupImg,
     required this.groupName,
@@ -23,18 +23,18 @@ class ChatPageWidget extends StatefulWidget {
   final List<String>? chatMemb;
 
   @override
-  State<ChatPageWidget> createState() => _ChatPageWidgetState();
+  State<ChatPageDocWidget> createState() => _ChatPageDocWidgetState();
 }
 
-class _ChatPageWidgetState extends State<ChatPageWidget> {
-  late ChatPageModel _model;
+class _ChatPageDocWidgetState extends State<ChatPageDocWidget> {
+  late ChatPageDocModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ChatPageModel());
+    _model = createModel(context, () => ChatPageDocModel());
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {

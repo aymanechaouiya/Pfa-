@@ -26,9 +26,6 @@ class ChatMembersRow extends SupabaseDataRow {
   String? get chatDesc => getField<String>('chat_desc');
   set chatDesc(String? value) => setField<String>('chat_desc', value);
 
-  String? get chatImg => getField<String>('chat_img');
-  set chatImg(String? value) => setField<String>('chat_img', value);
-
   List<String> get chatMembers => getListField<String>('chat_members');
   set chatMembers(List<String>? value) =>
       setListField<String>('chat_members', value);
@@ -39,4 +36,7 @@ class ChatMembersRow extends SupabaseDataRow {
   DateTime? get lastMessageTime => getField<DateTime>('last_message_time');
   set lastMessageTime(DateTime? value) =>
       setField<DateTime>('last_message_time', value);
+
+  String? get chatImg => getField<String>('chat_img');
+  set chatImg(String? value) => setField<String>('chat_img', value);
 }
