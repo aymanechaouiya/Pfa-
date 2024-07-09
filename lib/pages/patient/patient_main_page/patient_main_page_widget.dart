@@ -462,10 +462,7 @@ class _PatientMainPageWidgetState extends State<PatientMainPageWidget> {
                                               const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 45.0, 0.0),
                                           child: Text(
-                                            valueOrDefault<String>(
-                                              listViewMedcinsRow.availiblity,
-                                              'lml',
-                                            ),
+                                            'tanger',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(

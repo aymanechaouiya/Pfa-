@@ -69,7 +69,7 @@ class _CreerDossierMedicalWidgetState extends State<CreerDossierMedicalWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Patient Intake form',
+                'Creer le  dossier médical',
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Outfit',
                       letterSpacing: 0.0,

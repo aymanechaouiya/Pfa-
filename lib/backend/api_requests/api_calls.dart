@@ -16,7 +16,7 @@ class GetRolesCall {
     return ApiManager.instance.makeApiCall(
       callName: 'getRoles',
       apiUrl:
-          'https://dzpyohvzxhxlymcdzvzs.supabase.co/rest/v1/users?username=ilike.*$searchString&uid=not.eq.$userId\$select=*',
+          'https://dzpyohvzxhxlymcdzvzs.supabase.co/rest/v1/users?username=ilike.*$searchString*&uuid=not.eq.$userId&role=eq.doctor&select=*',
       callType: ApiCallType.GET,
       headers: {
         'apikey':

@@ -20,8 +20,8 @@ class RendezVousRow extends SupabaseDataRow {
   DateTime? get dates => getField<DateTime>('dates');
   set dates(DateTime? value) => setField<DateTime>('dates', value);
 
-  PostgresTime? get temps => getField<PostgresTime>('temps');
-  set temps(PostgresTime? value) => setField<PostgresTime>('temps', value);
+  String? get temps => getField<String>('temps');
+  set temps(String? value) => setField<String>('temps', value);
 
   String? get nomMedcines => getField<String>('nom medcines');
   set nomMedcines(String? value) => setField<String>('nom medcines', value);

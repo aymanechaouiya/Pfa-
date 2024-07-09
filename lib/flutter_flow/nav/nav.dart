@@ -214,11 +214,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const UpdatePasswordPatientWidget(),
         ),
         FFRoute(
-          name: 'crud',
-          path: '/crud',
-          builder: (context, params) => const CrudWidget(),
-        ),
-        FFRoute(
           name: 'creer_dossierMedical',
           path: '/creerDossierMedical',
           builder: (context, params) => const CreerDossierMedicalWidget(),
