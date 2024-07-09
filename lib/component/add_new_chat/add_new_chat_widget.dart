@@ -285,6 +285,8 @@ class _AddNewChatWidgetState extends State<AddNewChatWidget> {
                           r'''$.uiid''',
                         ).toString()),
                   });
+
+                  context.pushNamed('PatientMainPage');
                 },
                 text: 'Add new contact',
                 options: FFButtonOptions(

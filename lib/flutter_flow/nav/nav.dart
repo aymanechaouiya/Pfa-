@@ -235,6 +235,15 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'groupName',
               ParamType.String,
             ),
+            chatId: params.getParam(
+              'chatId',
+              ParamType.int,
+            ),
+            chatMemb: params.getParam<String>(
+              'chatMemb',
+              ParamType.String,
+              isList: true,
+            ),
           ),
         ),
         FFRoute(

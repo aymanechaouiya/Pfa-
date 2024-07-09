@@ -9,7 +9,7 @@ export 'tables/slots.dart';
 export 'tables/medcins.dart';
 export 'tables/users_role.dart';
 export 'tables/rendez_vous.dart';
-export 'tables/message.dart';
+export 'tables/messages.dart';
 export 'tables/chat_members.dart';
 export 'tables/maladies.dart';
 export 'tables/users.dart';
